@@ -20,7 +20,7 @@ namespace HoneyShopWebsiteBackend
         {
             Configuration = configuration;
         }
-
+ 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -29,7 +29,7 @@ namespace HoneyShopWebsiteBackend
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "HoneyShopWebsiteBackend", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "HoneyShop.WebApi", Version = "v1"});
             });
         }
 
@@ -40,7 +40,7 @@ namespace HoneyShopWebsiteBackend
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HoneyShopWebsiteBackend v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HoneyShop.WebApi v1"));
             }
 
             app.UseHttpsRedirection();

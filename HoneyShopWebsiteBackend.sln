@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShopWebsiteBackend", "HoneyShopWebsiteBackend\HoneyShopWebsiteBackend.csproj", "{77662249-819A-404B-97E0-2BC378825336}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.WebApi", "HoneyShop.WebApi\HoneyShop.WebApi.csproj", "{77662249-819A-404B-97E0-2BC378825336}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HoneyShop.Core", "HoneyShop.Core", "{E8821121-F99A-40F1-B438-6217C230CEFF}"
 EndProject
