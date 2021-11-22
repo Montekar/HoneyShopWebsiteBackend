@@ -66,9 +66,9 @@ namespace HoneyShopWebsiteBackend.Controllers
             var deletedProduct = _service.DeleteProduct(id);
             if (deletedProduct)
             {
-                return Ok();
+                return Ok("Product was deleted");
             }
-            return BadRequest();
+            return BadRequest("Product couldn't be deleted");
         }
     }
 }
