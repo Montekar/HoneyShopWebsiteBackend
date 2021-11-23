@@ -19,11 +19,6 @@ namespace HoneyShop.Domain.Service
             return _productRepository.GetAllProducts();
         }
 
-        public bool DeleteProduct(int id)
-        {
-            return _productRepository.DeleteProduct(id);
-        }
-
         public bool CreateProduct(Product product)
         {
             return _productRepository.CreateProduct(product);
@@ -32,6 +27,11 @@ namespace HoneyShop.Domain.Service
         public bool UpdateProduct(Product product)
         {
             return _productRepository.UpdateProduct(product);
+        }
+        
+        public bool DeleteProduct(int id)
+        {
+            return _productRepository.DeleteProduct(id);
         }
     }
 }
