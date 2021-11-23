@@ -41,21 +41,16 @@ namespace HoneyShop.DataAccess.Repositories
 
         public bool UpdateProduct(Product product)
         {
-            var productEntity = new ProductEntity()
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                Price = product.Price
-            };
+
             if (product != null)
             {
-                _honeyContext.Attach(productEntity).State = EntityState.Modified;
+                _honeyContext.Update(product);
                 _honeyContext.SaveChanges();
                 return true;
             }
 
             return false;
+
         }
 
         public bool CreateProduct(Product product)
