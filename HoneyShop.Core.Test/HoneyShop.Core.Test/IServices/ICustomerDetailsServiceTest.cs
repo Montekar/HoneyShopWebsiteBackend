@@ -8,11 +8,11 @@ namespace HoneyShop.Core.Test.IServices
 {
     public class ICustomerDetailsServiceTest
     {
-        private readonly Mock<ICostumerDetailsService> _service;
+        private readonly Mock<ICustomerDetailsService> _service;
 
         public ICustomerDetailsServiceTest()
         {
-            _service = new Mock<ICostumerDetailsService>();
+            _service = new Mock<ICustomerDetailsService>();
         }
 
         [Fact]
@@ -93,16 +93,16 @@ namespace HoneyShop.Core.Test.IServices
             var customerDetails = new CustomerDetails()
             {
                 Id = 1, 
-                FirstName = "Soup",
-                LastName = "sefwef",
-                Email = "safse",
-                PhoneNumber = 213546,
+                FirstName = "Bob",
+                LastName = "TheBuilder",
+                Email = "email@gmail.com",
+                PhoneNumber = 12345678,
                     
-                AddressCountry = "ewfwef",
-                AddressCity = "ewfwef",
-                AddressPostCode = 123,
-                AddressStreet = "ewfwef",
-                AddressNumber = "ewfwef"
+                AddressCountry = "Denmark",
+                AddressCity = "Esbjerg",
+                AddressPostCode = 6500,
+                AddressStreet = "Randomgade",
+                AddressNumber = "96 ST TV"
             };
             _service.Setup(ps => ps.UpdateCustomerDetails(customerDetails))
                 .Returns(expected);
@@ -119,41 +119,12 @@ namespace HoneyShop.Core.Test.IServices
             
             Assert.Equal(expected, _service.Object.DeleteCustomerDetails(1));
         }
-
+        
         [Fact]
         public void GetCustomerDetails_ById()
         {
-            var expected = new List<CustomerDetails>()
-            {
-                new CustomerDetails()
-                {
-                    Id = 1, 
-                    FirstName = "Soup",
-                    LastName = "sefwef",
-                    Email = "safse",
-                    PhoneNumber = 213546,
-                    
-                    AddressCountry = "ewfwef",
-                    AddressCity = "ewfwef",
-                    AddressPostCode = 123,
-                    AddressStreet = "ewfwef",
-                    AddressNumber = "ewfwef"
-                },
-                new CustomerDetails()
-                {
-                    Id = 2, 
-                    FirstName = "Soup",
-                    LastName = "sefwef",
-                    Email = "safse",
-                    PhoneNumber = 213546,
-                    
-                    AddressCountry = "ewfwef",
-                    AddressCity = "ewfwef",
-                    AddressPostCode = 123,
-                    AddressStreet = "ewfwef",
-                    AddressNumber = "ewfwef"
-                },
-            };
+            var expected = new CustomerDetails();
+            
             _service.Setup(ps => ps.GetCustomerDetailsById(1))
                 .Returns(expected);
             
