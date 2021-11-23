@@ -22,10 +22,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.Security", "Honey
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.Core.Test", "HoneyShop.Core.Test\HoneyShop.Core.Test\HoneyShop.Core.Test.csproj", "{07AA27F9-5563-4155-B846-3BAC691973B2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HoneyShop.Infrastructure.Test", "HoneyShop.Infrastructure.Test", "{087C8A50-13C3-4AB7-BADC-C1FD67EBF2D3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.Security.Test", "HoneyShop.Security.Test\HoneyShop.Security.Test.csproj", "{E034AEA9-0ADC-41FE-9FF2-F6F7CF8445B6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,10 +56,6 @@ Global
 		{07AA27F9-5563-4155-B846-3BAC691973B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07AA27F9-5563-4155-B846-3BAC691973B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07AA27F9-5563-4155-B846-3BAC691973B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E034AEA9-0ADC-41FE-9FF2-F6F7CF8445B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E034AEA9-0ADC-41FE-9FF2-F6F7CF8445B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E034AEA9-0ADC-41FE-9FF2-F6F7CF8445B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E034AEA9-0ADC-41FE-9FF2-F6F7CF8445B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{77662249-819A-404B-97E0-2BC378825336} = {EE1A6452-FC20-4DF5-9562-BC51A870CD4C}
@@ -73,6 +65,5 @@ Global
 		{9E724568-F2C8-4434-9CAE-597068164DA8} = {9DE98996-B67C-4F14-B521-D9A11F1C99F8}
 		{630E9B14-C189-446D-9364-925C7DF9D3F5} = {9DE98996-B67C-4F14-B521-D9A11F1C99F8}
 		{07AA27F9-5563-4155-B846-3BAC691973B2} = {B70024B4-FFF1-49C4-BF9B-2992E2769422}
-		{E034AEA9-0ADC-41FE-9FF2-F6F7CF8445B6} = {087C8A50-13C3-4AB7-BADC-C1FD67EBF2D3}
 	EndGlobalSection
 EndGlobal
