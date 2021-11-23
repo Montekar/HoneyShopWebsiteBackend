@@ -100,12 +100,12 @@ namespace HoneyShop.Infrastructure.Test
         }
         
         [Fact]
-        public void UpdateProduct_UpdateProductInDBContext_ReturnBoolean()
+        public void UpdateProduct_UpdateProductInDBContext_ReturnProduct()
         {
             _fakeContext.Set<ProductEntity>().AddRange(_list);
             _fakeContext.SaveChanges();
             
-            var productToUpdate = _fakeContext.Products.Where(p => p.Id == 1);
+            var productToUpdate = _fakeContext.Products.FirstOrDefault(p => p.Id == 1);
             
             if (productToUpdate != null)
             {
@@ -115,8 +115,8 @@ namespace HoneyShop.Infrastructure.Test
 
             var product = new Product()
             {
-                Id = 1,
-                Name = "Honey",
+                Id = productToUpdate.Id,
+                Name = productToUpdate.Name,
                 Description = "1kg of honey",
                 Price = 5.00
             };
