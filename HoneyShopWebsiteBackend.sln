@@ -22,6 +22,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.Security", "Honey
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.Core.Test", "HoneyShop.Core.Test\HoneyShop.Core.Test\HoneyShop.Core.Test.csproj", "{07AA27F9-5563-4155-B846-3BAC691973B2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HoneyShop.Infrastructure.Test", "HoneyShop.Infrastructure.Test", "{8E3902F1-E523-4C1F-A1E2-C3148E69EE7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HoneyShop.Presentation.Test", "HoneyShop.Presentation.Test", "{08A03E08-98C0-452F-A198-4119A4EE108E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.Infrastructure.Test", "HoneyShop.Infrastructure.Test\HoneyShop.Infrastructure.Test.csproj", "{ADDCA8C8-2AB5-4170-ADF8-E4CD3731EEF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoneyShop.Presentation.Test", "HoneyShop.Presentation.Test\HoneyShop.Presentation.Test.csproj", "{7EB96500-270D-4EB2-8D80-175E39831393}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +64,14 @@ Global
 		{07AA27F9-5563-4155-B846-3BAC691973B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07AA27F9-5563-4155-B846-3BAC691973B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07AA27F9-5563-4155-B846-3BAC691973B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADDCA8C8-2AB5-4170-ADF8-E4CD3731EEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDCA8C8-2AB5-4170-ADF8-E4CD3731EEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDCA8C8-2AB5-4170-ADF8-E4CD3731EEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDCA8C8-2AB5-4170-ADF8-E4CD3731EEF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EB96500-270D-4EB2-8D80-175E39831393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EB96500-270D-4EB2-8D80-175E39831393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EB96500-270D-4EB2-8D80-175E39831393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EB96500-270D-4EB2-8D80-175E39831393}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{77662249-819A-404B-97E0-2BC378825336} = {EE1A6452-FC20-4DF5-9562-BC51A870CD4C}
@@ -65,5 +81,7 @@ Global
 		{9E724568-F2C8-4434-9CAE-597068164DA8} = {9DE98996-B67C-4F14-B521-D9A11F1C99F8}
 		{630E9B14-C189-446D-9364-925C7DF9D3F5} = {9DE98996-B67C-4F14-B521-D9A11F1C99F8}
 		{07AA27F9-5563-4155-B846-3BAC691973B2} = {B70024B4-FFF1-49C4-BF9B-2992E2769422}
+		{ADDCA8C8-2AB5-4170-ADF8-E4CD3731EEF9} = {8E3902F1-E523-4C1F-A1E2-C3148E69EE7C}
+		{7EB96500-270D-4EB2-8D80-175E39831393} = {08A03E08-98C0-452F-A198-4119A4EE108E}
 	EndGlobalSection
 EndGlobal
