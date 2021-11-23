@@ -1,4 +1,5 @@
-﻿using HoneyShop.DataAccess.Entities;
+﻿using HoneyShop.Core.Models;
+using HoneyShop.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace HoneyShop.DataAccess
@@ -39,5 +40,6 @@ namespace HoneyShop.DataAccess
             */    
         }
         public virtual DbSet<ProductEntity> Products { get; set; }
+        public virtual DbSet<CustomerDetailsEntity> CustomerDetails { get; set; }
     }
 }

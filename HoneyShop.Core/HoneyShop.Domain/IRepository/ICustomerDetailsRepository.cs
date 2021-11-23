@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using HoneyShop.Core.Models;
 
-namespace HoneyShop.Core.IServices
+namespace HoneyShop.Domain.IRepository
 {
-    public interface ICostumerDetailsService
+    public interface ICustomerDetailsRepository
     {
         List<CustomerDetails> GetAllCustomerDetails();
         bool CreateCustomerDetails(CustomerDetails customerDetails);
@@ -11,5 +11,4 @@ namespace HoneyShop.Core.IServices
         bool DeleteCustomerDetails(int id);
         CustomerDetails GetCustomerDetailsById(int id);
     }
-
 }
