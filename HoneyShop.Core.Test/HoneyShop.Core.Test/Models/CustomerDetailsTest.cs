@@ -53,13 +53,13 @@ namespace HoneyShop.Core.Test.Models
         }
 
         [Fact]
-        public void CustomerDetailClass_HasPhoneNumber_WithTypeInt()
+        public void CustomerDetailClass_HasPhoneNumber_WithTypeString()
         {
-            var expected = 12345678;
-            _customerDetails.PhoneNumber = 12345678;
+            var expected = "12345678";
+            _customerDetails.PhoneNumber = "12345678";
             
             Assert.Equal(expected, _customerDetails.PhoneNumber);
-            Assert.True(_customerDetails.PhoneNumber is int);
+            Assert.True(_customerDetails.PhoneNumber is string);
         }
         
         

@@ -6,7 +6,7 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string AddressCountry { get; set; }
         public string AddressCity { get; set; }
         public int AddressPostCode { get; set; }

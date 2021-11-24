@@ -66,5 +66,16 @@ namespace HoneyShop.Core.Test.IServices
             
             Assert.Equal(expected, _service.Object.UpdateProduct(product));
         }
+        
+        [Fact]
+        public void GetProduct_ById()
+        {
+            var expected = new Product();
+            
+            _service.Setup(ps => ps.GetProductById(1))
+                .Returns(expected);
+            
+            Assert.Equal(expected, _service.Object.GetProductById(1));
+        }
     }
 }
