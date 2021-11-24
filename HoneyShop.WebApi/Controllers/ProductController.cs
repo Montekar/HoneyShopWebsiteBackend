@@ -70,5 +70,17 @@ namespace HoneyShopWebsiteBackend.Controllers
             }
             return BadRequest("Product couldn't be deleted");
         }
+        
+        [HttpGet("{id}")]
+        public ActionResult<Product> GetProductById(int id)
+        {
+            var productById = _service.GetProductById(id);
+            if (productById != null)
+            {
+                return productById;
+            }
+
+            return BadRequest("Product was not found");
+        }
     }
 }

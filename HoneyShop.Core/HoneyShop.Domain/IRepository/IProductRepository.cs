@@ -10,5 +10,6 @@ namespace HoneyShop.Domain.IRepository
         bool UpdateProduct(Product product);
         bool CreateProduct(Product product);
 
+        Product GetProductById(int id);
     }
 }
