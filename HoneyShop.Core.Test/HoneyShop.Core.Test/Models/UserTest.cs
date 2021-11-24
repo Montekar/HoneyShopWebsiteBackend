@@ -41,40 +41,6 @@ namespace HoneyShop.Core.Test.Models
             _user.Username = "ExpectedUsername";
             Assert.Equal("ExpectedUsername",_user.Username);
         }
-        
-        [Fact]
-        public void User_SetFirstName_StoreFirstNameAsString()
-        {
-            _user.FirstName = "ExpectedFirstName";
-            Assert.Equal("ExpectedFirstName",_user.FirstName);
-        }
-        
-        [Fact]
-        public void User_SetLastName_StoreLastNameAsString()
-        {
-            _user.LastName = "ExpectedLastName";
-            Assert.Equal("ExpectedLastName",_user.LastName);
-        }
-        
-        [Fact]
-        public void User_SetAddress_StoreAddressAsString()
-        {
-            _user.Address = "ExpectedAddress";
-            Assert.Equal("ExpectedAddress",_user.Address);
-        }
-        [Fact]
-        public void User_SetEmail_StoreEmailAsString()
-        {
-            _user.Email = "ExpectedEmail";
-            Assert.Equal("ExpectedEmail",_user.Email);
-        }
-        
-        [Fact]
-        public void User_SetPhoneNumber_StorePhoneNumberAsString()
-        {
-            _user.PhoneNumber = "ExpectedPhoneNumber";
-            Assert.Equal("ExpectedPhoneNumber",_user.PhoneNumber);
-        }
 
         [Fact]
         public void User_SetPasswordHash_StorePasswordHashAsByteArray()
@@ -88,6 +54,13 @@ namespace HoneyShop.Core.Test.Models
         {
             _user.PasswordSalt = new byte[] {0, 255};
             Assert.Equal(new byte[] {0, 255},_user.PasswordSalt);
+        }
+        
+        [Fact]
+        public void User_SetRole_StoreRoleAsString()
+        {
+            _user.Role = "ExpectedRole";
+            Assert.Equal("ExpectedRole",_user.Role);
         }
     }
 }
