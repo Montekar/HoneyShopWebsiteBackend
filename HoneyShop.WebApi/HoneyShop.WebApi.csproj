@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HoneyShop.DataAccess\HoneyShop.DataAccess.csproj" />
+      <ProjectReference Include="..\HoneyShop.Security\HoneyShop.Security.csproj" />
     </ItemGroup>
 
 </Project>
