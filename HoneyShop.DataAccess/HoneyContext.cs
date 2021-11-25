@@ -22,6 +22,9 @@ namespace HoneyShop.DataAccess
                 .HasData(new ProductEntity() {Id = 3, Name = "Honey", Description = "Dark fresh", Price = 5});
             modelBuilder.Entity<ProductEntity>()
                 .HasData(new ProductEntity() {Id = 4, Name = "Honey", Description = "Dark solid", Price = 5});
+            
+            modelBuilder.Entity<UserEntity>()
+                .HasData(new UserEntity() {Id = 1, Username = "HoneyUser"});
 
             /*
             modelBuilder.Entity<UserEntity>()
@@ -41,5 +44,6 @@ namespace HoneyShop.DataAccess
         }
         public virtual DbSet<ProductEntity> Products { get; set; }
         public virtual DbSet<CustomerDetailsEntity> CustomerDetails { get; set; }
+        public virtual DbSet<UserEntity> Users { get; set; }
     }
 }
