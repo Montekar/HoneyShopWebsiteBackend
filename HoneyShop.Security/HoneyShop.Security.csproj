@@ -8,7 +8,11 @@
       <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="5.0.12" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.12" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.12" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.2.2" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HoneyShop.Core\HoneyShop.Domain\HoneyShop.Domain.csproj" />
     </ItemGroup>
 
 </Project>

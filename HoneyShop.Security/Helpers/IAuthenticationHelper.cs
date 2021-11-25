@@ -1,4 +1,5 @@
 ﻿using System;
+using HoneyShop.Core.Models;
 
 namespace HoneyShop.Security.Helpers
 {
@@ -6,6 +7,6 @@ namespace HoneyShop.Security.Helpers
     {
         void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt);
         bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt);
-        string GenerateToken(Object user);
+        string GenerateToken(User user);
     }
 }

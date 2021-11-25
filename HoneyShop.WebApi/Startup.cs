@@ -8,6 +8,7 @@ using HoneyShop.DataAccess.Repositories;
 using HoneyShop.Domain;
 using HoneyShop.Domain.IRepository;
 using HoneyShop.Domain.Service;
+using HoneyShop.Security.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,6 +51,7 @@ namespace HoneyShopWebsiteBackend
                     ValidateLifetime = true, //validate the expiration and not before values in the token
                     ClockSkew = TimeSpan.FromMinutes(5) //5 minute tolerance for the expiration date
                 };
+                
             });
 
             services.AddControllers();
@@ -82,20 +84,17 @@ namespace HoneyShopWebsiteBackend
                 }, ServiceLifetime.Transient
             );
             
-            //services.AddScoped<IAdminService,AdminService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICustomerDetailsService, CustomerDetailsService>();
             services.AddScoped<IUserService,UserService>();
-            //services.AddScoped<IUserService, UserService>();
-            
-            //services.AddScoped<IAdminRepository,AdminRepository>();
+
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICustomerDetailsRepository, CustomerDetailsRepository>();
             services.AddScoped<IUserRepository,UserRepository>();
-            //services.AddScoped<IUserRepository, UserRepository>();
+            
+            services.AddScoped<IUserAuthenticator,UserAuthenticator>();
 
-            //services.AddSingleton<IAuthenticationHelper>(new AuthenticationHelper(secretBytes));
-            //services.AddScoped<IAuthenticator, Authenticator>();
+            services.AddSingleton<IAuthenticationHelper>(new AuthenticationHelper(secretBytes));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

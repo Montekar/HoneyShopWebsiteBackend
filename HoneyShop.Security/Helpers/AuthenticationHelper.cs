@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using HoneyShop.Core.Models;
 using Microsoft.IdentityModel.Tokens;
 
 namespace HoneyShop.Security.Helpers
@@ -11,6 +12,11 @@ namespace HoneyShop.Security.Helpers
     {
 
         private byte[] _secretBytes;
+
+        public AuthenticationHelper(Byte[] secretBytes)
+        {
+            _secretBytes = secretBytes;
+        }
 
         public void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
@@ -36,16 +42,16 @@ namespace HoneyShop.Security.Helpers
         }
 
         //Change object to user
-        public string GenerateToken(Object user)
+        public string GenerateToken(User user)
         {
-            /*var claims = new List<Claim>
+            var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Sid, user.Id.ToString())
             };
             
-            claims.Add(new Claim(ClaimTypes.Role));
-
+            claims.Add(new Claim(ClaimTypes.Role,user.Role));
+            
             var token = new JwtSecurityToken(
                 new JwtHeader(new SigningCredentials(
                     new SymmetricSecurityKey(_secretBytes),
@@ -56,8 +62,7 @@ namespace HoneyShop.Security.Helpers
                     DateTime.Now,
                     DateTime.Now.AddMinutes(10)));
 
-            return new JwtSecurityTokenHandler().WriteToken(token);*/
-            return "token";
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
