@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HoneyShop.Core.IServices;
 using HoneyShop.DataAccess;
 using HoneyShop.DataAccess.Repositories;
+using HoneyShop.Domain;
 using HoneyShop.Domain.IRepository;
 using HoneyShop.Domain.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -84,11 +85,13 @@ namespace HoneyShopWebsiteBackend
             //services.AddScoped<IAdminService,AdminService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICustomerDetailsService, CustomerDetailsService>();
+            services.AddScoped<IUserService,UserService>();
             //services.AddScoped<IUserService, UserService>();
             
             //services.AddScoped<IAdminRepository,AdminRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICustomerDetailsRepository, CustomerDetailsRepository>();
+            services.AddScoped<IUserRepository,UserRepository>();
             //services.AddScoped<IUserRepository, UserRepository>();
 
             //services.AddSingleton<IAuthenticationHelper>(new AuthenticationHelper(secretBytes));
