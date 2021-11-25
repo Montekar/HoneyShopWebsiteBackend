@@ -18,8 +18,4 @@
       <ProjectReference Include="..\HoneyShop.DataAccess\HoneyShop.DataAccess.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
 </Project>
