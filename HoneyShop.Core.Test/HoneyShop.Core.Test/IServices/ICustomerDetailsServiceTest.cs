@@ -32,7 +32,7 @@ namespace HoneyShop.Core.Test.IServices
                     FirstName = "Soup",
                     LastName = "sefwef",
                     Email = "safse",
-                    PhoneNumber = 213546,
+                    PhoneNumber = "213546",
                     
                     AddressCountry = "ewfwef",
                     AddressCity = "ewfwef",
@@ -46,7 +46,7 @@ namespace HoneyShop.Core.Test.IServices
                     FirstName = "Soup",
                     LastName = "sefwef",
                     Email = "safse",
-                    PhoneNumber = 213546,
+                    PhoneNumber = "213546",
                     
                     AddressCountry = "ewfwef",
                     AddressCity = "ewfwef",
@@ -72,7 +72,7 @@ namespace HoneyShop.Core.Test.IServices
                 FirstName = "Soup",
                 LastName = "sefwef",
                 Email = "safse",
-                PhoneNumber = 213546,
+                PhoneNumber = "213546",
                     
                 AddressCountry = "ewfwef",
                 AddressCity = "ewfwef",
@@ -96,7 +96,7 @@ namespace HoneyShop.Core.Test.IServices
                 FirstName = "Bob",
                 LastName = "TheBuilder",
                 Email = "email@gmail.com",
-                PhoneNumber = 12345678,
+                PhoneNumber = "12345678",
                     
                 AddressCountry = "Denmark",
                 AddressCity = "Esbjerg",

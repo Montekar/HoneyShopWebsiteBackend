@@ -64,7 +64,7 @@ namespace HoneyShop.Core.Test.Models
         }
         
         [Fact]
-        public void NotEquals_ProductWithDiffrentProperties_ReturnFalse()
+        public void NotEquals_ProductWithDifferentProperties_ReturnFalse()
         {
             var product1 = new Product() { Id = 1, Name = "Honey", Description = "1kg Dark Honey", Price = 5.00 };
             var product2 = new Product() { Id = 1, Name = "Honey", Description = "1kg Bright Honey", Price = 5.00 };

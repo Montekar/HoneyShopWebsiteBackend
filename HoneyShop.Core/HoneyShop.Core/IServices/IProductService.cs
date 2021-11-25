@@ -9,5 +9,6 @@ namespace HoneyShop.Core.IServices
         bool DeleteProduct(int id);
         bool CreateProduct(Product product);
         bool UpdateProduct(Product product);
+        Product GetProductById(int id);
     }
 }

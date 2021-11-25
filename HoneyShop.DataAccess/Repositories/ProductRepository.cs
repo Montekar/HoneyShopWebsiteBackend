@@ -65,5 +65,22 @@ namespace HoneyShop.DataAccess.Repositories
             _honeyContext.SaveChanges();
             return true;
         }
+
+        public Product GetProductById(int id)
+        {
+            var productById = _honeyContext.Products.FirstOrDefault(product => id.Equals(product.Id));
+            if (productById != null)
+            {
+                return new Product()
+                {
+                    Id = productById.Id,
+                    Name = productById.Name,
+                    Description = productById.Description,
+                    Price = productById.Price
+                };
+            }
+
+            return null;
+        }
     }
 }

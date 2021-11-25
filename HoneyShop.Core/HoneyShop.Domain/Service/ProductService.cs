@@ -28,10 +28,15 @@ namespace HoneyShop.Domain.Service
         {
             return _productRepository.UpdateProduct(product);
         }
-        
+
         public bool DeleteProduct(int id)
         {
             return _productRepository.DeleteProduct(id);
+        }
+        
+        public Product GetProductById(int id)
+        {
+            return _productRepository.GetProductById(id);
         }
     }
 }
