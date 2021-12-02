@@ -21,7 +21,7 @@ namespace HoneyShop.DataAccess.Repositories
             {
                 Id = ue.Id,
                 Role = ue.Role,
-                Username = ue.Username,
+                Email = ue.Username,
                 PasswordHash = ue.PasswordHash,
                 PasswordSalt = ue.PasswordSalt
             }).ToList();
@@ -33,7 +33,7 @@ namespace HoneyShop.DataAccess.Repositories
             {
                 Id = ue.Id,
                 Role = ue.Role,
-                Username = ue.Username,
+                Email = ue.Username,
                 PasswordHash = ue.PasswordHash,
                 PasswordSalt = ue.PasswordSalt
             }).FirstOrDefault(user => user.Id == id);
@@ -45,7 +45,7 @@ namespace HoneyShop.DataAccess.Repositories
             {
                 Id = user.Id,
                 Role = user.Role,
-                Username = user.Username,
+                Username = user.Email,
                 PasswordHash = user.PasswordHash,
                 PasswordSalt = user.PasswordSalt
             };
@@ -55,7 +55,7 @@ namespace HoneyShop.DataAccess.Repositories
             {
                 Id = savedEntity.Id,
                 Role = savedEntity.Role,
-                Username = savedEntity.Username,
+                Email = savedEntity.Username,
                 PasswordHash = savedEntity.PasswordHash,
                 PasswordSalt = savedEntity.PasswordSalt
             };
@@ -67,7 +67,7 @@ namespace HoneyShop.DataAccess.Repositories
             {
                 Id = user.Id,
                 Role = user.Role,
-                Username = user.Username,
+                Username = user.Email,
                 PasswordHash = user.PasswordHash,
                 PasswordSalt = user.PasswordSalt
             };
@@ -78,7 +78,7 @@ namespace HoneyShop.DataAccess.Repositories
             {
                 Id = savedEntity.Id,
                 Role = savedEntity.Role,
-                Username = savedEntity.Username,
+                Email = savedEntity.Username,
                 PasswordHash = savedEntity.PasswordHash,
                 PasswordSalt = savedEntity.PasswordSalt
             };
@@ -93,7 +93,7 @@ namespace HoneyShop.DataAccess.Repositories
             {
                 Id = deletedEntity.Id,
                 Role = deletedEntity.Role,
-                Username = deletedEntity.Username,
+                Email = deletedEntity.Username,
                 PasswordHash = deletedEntity.PasswordHash,
                 PasswordSalt = deletedEntity.PasswordSalt
             };

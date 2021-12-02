@@ -23,16 +23,16 @@ namespace HoneyShopWebsiteBackend.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] RegisterInput registerInput)
         {
-            string username = registerInput.Username;
+            string email = registerInput.Email;
             string password = registerInput.Password;
 
-            if (_userAuthenticator.CreateUser(username, password))
+            if (_userAuthenticator.CreateUser(email, password))
             {
                 //Authentication succesful
                 return Ok();
             }
 
-            return Problem("Could not create user with name: " + username);
+            return Problem("Could not create user with name: " + email);
         }
     }
 }

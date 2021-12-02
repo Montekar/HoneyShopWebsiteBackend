@@ -34,7 +34,7 @@ namespace HoneyShop.Core.Test.IServices
             var fakeUser = new User
             {
                 Id = fakeId,
-                Username = "ExpectedUsername",
+                Email = "ExpectedUsername",
                 PasswordHash = new byte[]{0,255},
                 PasswordSalt = new byte[]{0,255},
                 Role = "ExpectedRole"
@@ -52,7 +52,7 @@ namespace HoneyShop.Core.Test.IServices
             var fakeUser = new User
             {
                 Id = 1,
-                Username = "ExpectedUsername",
+                Email = "ExpectedUsername",
                 PasswordHash = new byte[]{0,255},
                 PasswordSalt = new byte[]{0,255},
                 Role = "ExpectedRole"
@@ -70,7 +70,7 @@ namespace HoneyShop.Core.Test.IServices
             var fakeUser = new User
             {
                 Id = 1,
-                Username = "ExpectedUsername",
+                Email = "ExpectedUsername",
                 PasswordHash = new byte[]{0,255},
                 PasswordSalt = new byte[]{0,255},
                 Role = "ExpectedRole"
@@ -88,7 +88,7 @@ namespace HoneyShop.Core.Test.IServices
             var fakeUser = new User
             {
                 Id = 1,
-                Username = "ExpectedUsername",
+                Email = "ExpectedUsername",
                 PasswordHash = new byte[]{0,255},
                 PasswordSalt = new byte[]{0,255},
                 Role = "ExpectedRole"

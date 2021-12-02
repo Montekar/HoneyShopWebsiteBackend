@@ -21,12 +21,12 @@ namespace HoneyShopWebsiteBackend.Controllers
         public IActionResult Post([FromBody] LoginInput loginInput)
         {
             string userToken;
-            if (_userAuthenticator.Login(loginInput.Username, loginInput.Password, out userToken))
+            if (_userAuthenticator.Login(loginInput.Email, loginInput.Password, out userToken))
             {
                 //Authentication successful
                 return Ok(new
                 {
-                    username = loginInput.Username,
+                    username = loginInput.Email,
                     token = userToken
                 });
             }
