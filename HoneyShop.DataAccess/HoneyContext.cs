@@ -24,7 +24,7 @@ namespace HoneyShop.DataAccess
                 .HasData(new ProductEntity() {Id = 4, Name = "Honey", Description = "Dark solid", Price = 5});
             
             modelBuilder.Entity<UserEntity>()
-                .HasData(new UserEntity() {Id = 1, Username = "HoneyUser"});
+                .HasData(new UserEntity() {Id = 1, Username = "test@gmail.com"});
 
             /*
             modelBuilder.Entity<UserEntity>()

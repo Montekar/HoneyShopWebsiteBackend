@@ -40,7 +40,7 @@ namespace HoneyShopWebsiteBackend.Controllers
                 {
                     Id = user.Id,
                     Role = user.Role,
-                    Username = user.Username
+                    Username = user.Email
                 }).ToList()
             });
         }
@@ -60,13 +60,13 @@ namespace HoneyShopWebsiteBackend.Controllers
                 return BadRequest("User not found");
             }
             
-            return Ok(new UserDto {Id = user.Id, Role = user.Role, Username = user.Username});
+            return Ok(new UserDto {Id = user.Id, Role = user.Role, Username = user.Email});
         }
         [HttpPost]
         public ActionResult<UserDto> CreateUser(UserDto user)
         {
-            var createdUser = _userService.CreateUser(new User{Id = user.Id,Role = user.Role,Username = user.Username});
-            return Ok(new UserDto {Id = createdUser.Id, Role = createdUser.Role, Username = createdUser.Username});
+            var createdUser = _userService.CreateUser(new User{Id = user.Id,Role = user.Role,Email = user.Username});
+            return Ok(new UserDto {Id = createdUser.Id, Role = createdUser.Role, Username = createdUser.Email});
         }
         
         [HttpPut("{id}")]
@@ -85,7 +85,7 @@ namespace HoneyShopWebsiteBackend.Controllers
             {
                 Id = userDto.Id,
                 Role = userDto.Role,
-                Username = userDto.Username
+                Email = userDto.Username
             });
             
             if (editedUser == null)
@@ -94,7 +94,7 @@ namespace HoneyShopWebsiteBackend.Controllers
             }
             
             
-            return Ok(new UserDto {Id = editedUser.Id, Role = editedUser.Role, Username = editedUser.Username});
+            return Ok(new UserDto {Id = editedUser.Id, Role = editedUser.Role, Username = editedUser.Email});
         }
         
         [HttpDelete("{id}")]
@@ -109,7 +109,7 @@ namespace HoneyShopWebsiteBackend.Controllers
             {
                 return BadRequest("User not found");
             }
-            return Ok(new UserDto {Id = deletedUser.Id,Role = deletedUser.Role,Username = deletedUser.Username});
+            return Ok(new UserDto {Id = deletedUser.Id,Role = deletedUser.Role,Username = deletedUser.Email});
         }
     }
 }

@@ -18,7 +18,7 @@ namespace HoneyShop.Security.Helpers
         
         public bool Login(string username, string password, out string token)
         {
-            User user = _userRepository.GetAllUsers().FirstOrDefault(user => user.Username.Equals(username));
+            User user = _userRepository.GetAllUsers().FirstOrDefault(user => user.Email.Equals(username));
 
             if (user == null)
             {
@@ -38,7 +38,7 @@ namespace HoneyShop.Security.Helpers
 
         public bool CreateUser(string username, string password)
         {
-            User user = _userRepository.GetAllUsers().FirstOrDefault(user => user.Username.Equals(username));
+            User user = _userRepository.GetAllUsers().FirstOrDefault(user => user.Email.Equals(username));
             
             if (user != null)
             {
@@ -50,7 +50,7 @@ namespace HoneyShop.Security.Helpers
             
             user = new User()
             {
-                Username = username,
+                Email = username,
                 Role = "User",
                 PasswordHash = passwordHash,
                 PasswordSalt = salt
