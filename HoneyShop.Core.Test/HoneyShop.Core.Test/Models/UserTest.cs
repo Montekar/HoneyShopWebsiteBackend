@@ -36,10 +36,10 @@ namespace HoneyShop.Core.Test.Models
         }
 
         [Fact]
-        public void User_SetUsername_StoreUsernameAsString()
+        public void User_SetEmail_StoreEmailAsString()
         {
-            _user.Email = "ExpectedUsername";
-            Assert.Equal("ExpectedUsername",_user.Email);
+            _user.Email = "ExpectedEmail";
+            Assert.Equal("ExpectedEmail",_user.Email);
         }
 
         [Fact]
