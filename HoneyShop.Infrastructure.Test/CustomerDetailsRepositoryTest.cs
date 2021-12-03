@@ -149,12 +149,12 @@ namespace HoneyShop.Infrastructure.Test
                 if (ReferenceEquals(x, null)) return false;
                 if (ReferenceEquals(y, null)) return false;
                 if (x.GetType() != y.GetType()) return false;
-                return x.Id == y.Id && x.FirstName == y.LastName && x.Email == y.Email && x.PhoneNumber.Equals(y.PhoneNumber);
+                return x.Id == y.Id && x.FirstName == y.LastName && x.PhoneNumber.Equals(y.PhoneNumber);
             }
 
             public int GetHashCode(CustomerDetails obj)
             {
-                return HashCode.Combine(obj.Id, obj.FirstName, obj.LastName, obj.Email, obj.PhoneNumber);
+                return HashCode.Combine(obj.Id, obj.FirstName, obj.LastName, obj.PhoneNumber);
             }
         }
     }

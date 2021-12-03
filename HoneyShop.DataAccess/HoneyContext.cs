@@ -29,17 +29,17 @@ namespace HoneyShop.DataAccess
                 .HasData(new ProductEntity() {Id = 6, Name = "Bee Bread", Description = "Bee Bread 200g", Price = 8});
             
             modelBuilder.Entity<ProductEntity>()
-                .HasData(new ProductEntity() {Id = 7, Name = "Soup 1", Description = "Soup with something 1", Price = 3.5});
+                .HasData(new ProductEntity() {Id = 7, Name = "Soap 1", Description = "Soap with something 1", Price = 3.5});
             modelBuilder.Entity<ProductEntity>()
-                .HasData(new ProductEntity() {Id = 8, Name = "Soup 2", Description = "Soup with something 2", Price = 3.5});
+                .HasData(new ProductEntity() {Id = 8, Name = "Soap 2", Description = "Soap with something 2", Price = 3.5});
             modelBuilder.Entity<ProductEntity>()
-                .HasData(new ProductEntity() {Id = 9, Name = "Soup 3", Description = "Soup with something 3", Price = 3.5});
+                .HasData(new ProductEntity() {Id = 9, Name = "Soap 3", Description = "Soap with something 3", Price = 3.5});
             modelBuilder.Entity<ProductEntity>()
-                .HasData(new ProductEntity() {Id = 10, Name = "Soup 4", Description = "Soup with something 4", Price = 3.5});
+                .HasData(new ProductEntity() {Id = 10, Name = "Soap 4", Description = "Soap with something 4", Price = 3.5});
             modelBuilder.Entity<ProductEntity>()
-                .HasData(new ProductEntity() {Id = 11, Name = "Soup 5", Description = "Soup with something 5", Price = 3.5});
+                .HasData(new ProductEntity() {Id = 11, Name = "Soap 5", Description = "Soap with something 5", Price = 3.5});
             modelBuilder.Entity<ProductEntity>()
-                .HasData(new ProductEntity() {Id = 12, Name = "Soup 6", Description = "Soup with something 6", Price = 3.5});
+                .HasData(new ProductEntity() {Id = 12, Name = "Soap 6", Description = "Soap with something 6", Price = 3.5});
             
             modelBuilder.Entity<UserEntity>()
                 .HasData(new UserEntity() {Id = 1, Username = "test@gmail.com"});

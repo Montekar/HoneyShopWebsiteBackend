@@ -31,7 +31,6 @@ namespace HoneyShop.Core.Test.IServices
                     Id = 1, 
                     FirstName = "Soup",
                     LastName = "sefwef",
-                    Email = "safse",
                     PhoneNumber = "213546",
                     
                     AddressCountry = "ewfwef",
@@ -45,7 +44,6 @@ namespace HoneyShop.Core.Test.IServices
                     Id = 2, 
                     FirstName = "Soup",
                     LastName = "sefwef",
-                    Email = "safse",
                     PhoneNumber = "213546",
                     
                     AddressCountry = "ewfwef",
@@ -71,7 +69,6 @@ namespace HoneyShop.Core.Test.IServices
                 Id = 1, 
                 FirstName = "Soup",
                 LastName = "sefwef",
-                Email = "safse",
                 PhoneNumber = "213546",
                     
                 AddressCountry = "ewfwef",
@@ -95,7 +92,6 @@ namespace HoneyShop.Core.Test.IServices
                 Id = 1, 
                 FirstName = "Bob",
                 LastName = "TheBuilder",
-                Email = "email@gmail.com",
                 PhoneNumber = "12345678",
                     
                 AddressCountry = "Denmark",

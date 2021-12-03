@@ -44,7 +44,6 @@ namespace HoneyShop.Domain.Test.Service
                     Id = 1, 
                     FirstName = "Bob",
                     LastName = "TheBuilder",
-                    Email = "email@gmail.com",
                     PhoneNumber = "12345678",
                     
                     AddressCountry = "Denmark",
@@ -58,7 +57,6 @@ namespace HoneyShop.Domain.Test.Service
                     Id = 2, 
                     FirstName = "Bob2",
                     LastName = "TheBuilder2",
-                    Email = "email2@gmail.com",
                     PhoneNumber = "87654321",
                     
                     AddressCountry = "Denmark",
@@ -83,7 +81,6 @@ namespace HoneyShop.Domain.Test.Service
                 Id = 1, 
                 FirstName = "Bob",
                 LastName = "TheBuilder",
-                Email = "email@gmail.com",
                 PhoneNumber = "12345678",
                     
                 AddressCountry = "Denmark",
@@ -107,7 +104,6 @@ namespace HoneyShop.Domain.Test.Service
                 Id = 1, 
                 FirstName = "Bob",
                 LastName = "TheBuilder",
-                Email = "email@gmail.com",
                 PhoneNumber = "12345678",
                     
                 AddressCountry = "Denmark",
