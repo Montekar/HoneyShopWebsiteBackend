@@ -41,16 +41,6 @@ namespace HoneyShop.Core.Test.Models
             Assert.Equal(expectedLastName, _customerDetails.LastName);
             Assert.True(_customerDetails.LastName is string);
         }
-        
-        [Fact]
-        public void CustomerDetailClass_HasEmail_WithTypeString_ContainsEta()
-        {
-            var expected = "email@gmail.com";
-            _customerDetails.Email = "email@gmail.com";
-
-            Assert.Contains("@", _customerDetails.Email);
-            Assert.True(_customerDetails.Email is string);
-        }
 
         [Fact]
         public void CustomerDetailClass_HasPhoneNumber_WithTypeString()

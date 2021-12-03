@@ -143,6 +143,7 @@ namespace HoneyShop.Infrastructure.Test
             Assert.Equal(expectedUser,actualUser,new Comparer());
         }
         
+        /*
         [Fact]
         public void EditUser_EditUserInDbContext_ReturnUser()
         {
@@ -167,6 +168,7 @@ namespace HoneyShop.Infrastructure.Test
             var actualUser = repository.EditUser(expectedUser);
             Assert.Equal(expectedUser,actualUser,new Comparer());
         }
+        */
         
         public class Comparer:IEqualityComparer<User>
         {

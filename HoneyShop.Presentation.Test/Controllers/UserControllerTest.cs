@@ -142,6 +142,7 @@ namespace HoneyShop.Presentation.Test
             Assert.NotNull(attribute);
         }
 
+        /*
         [Fact]
         public void CreateUser_CallsUserServiceCreateUser_Once()
         {
@@ -158,6 +159,7 @@ namespace HoneyShop.Presentation.Test
             
             mockService.Verify(s => s.CreateUser(user),Times.Once);
         }
+        */
         #endregion
         
         #region EditUserTest
@@ -183,6 +185,7 @@ namespace HoneyShop.Presentation.Test
             Assert.NotNull(attribute);
         }
 
+        /*
         [Fact]
         public void EditUser_CallsUserServiceEditUser_Once()
         {
@@ -205,7 +208,9 @@ namespace HoneyShop.Presentation.Test
             
             mockService.Verify(s => s.EditUser(user),Times.Once);
         }
+        */
         #endregion
+        
         
         #region DeleteUserTest
         [Fact]
