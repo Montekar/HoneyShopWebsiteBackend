@@ -63,5 +63,7 @@ namespace HoneyShop.DataAccess
         public virtual DbSet<ProductEntity> Products { get; set; }
         public virtual DbSet<CustomerDetailsEntity> CustomerDetails { get; set; }
         public virtual DbSet<UserEntity> Users { get; set; }
+
+        public virtual DbSet<ShoppingCartEntity> ShoppingCartItems { get; set; }
     }
 }
