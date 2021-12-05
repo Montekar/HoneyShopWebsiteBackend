@@ -21,13 +21,13 @@ namespace HoneyShop.Domain.Test.Service
         }
 
         [Fact]
-        public void ProductRepository_IsIProductRepository()
+        public void ProductService_IsIProductService()
         {
             Assert.True(_service is IProductService);
         }
 
         [Fact]
-        public void ProductRepository_WithNullProductRepository_ThrowsExceptionWithMessage()
+        public void ProductService_WithNullProductRepository_ThrowsExceptionWithMessage()
         {
             var exception = Assert.Throws<InvalidDataException>(
                 () => new ProductService(null));
