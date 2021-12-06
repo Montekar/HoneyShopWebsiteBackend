@@ -34,7 +34,7 @@ namespace HoneyShopWebsiteBackend.Controllers
             return _service.GetAllItems();
         }
         
-        [HttpPut("{id}")]
+        [HttpPut]
         public ActionResult<ShoppingCart> UpdateItem([FromBody] ShoppingCart item)
         {
             
