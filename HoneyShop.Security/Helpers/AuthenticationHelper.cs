@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using HoneyShop.Core.Models;
 using Microsoft.IdentityModel.Tokens;
 
@@ -49,7 +50,6 @@ namespace HoneyShop.Security.Helpers
                 new Claim(ClaimTypes.Name, user.Email),
                 new Claim(ClaimTypes.Sid, user.Id.ToString())
             };
-            
             claims.Add(new Claim(ClaimTypes.Role,user.Role));
             
             var token = new JwtSecurityToken(
@@ -61,7 +61,6 @@ namespace HoneyShop.Security.Helpers
                     claims.ToArray(),
                     DateTime.Now,
                     DateTime.Now.AddMinutes(10)));
-
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

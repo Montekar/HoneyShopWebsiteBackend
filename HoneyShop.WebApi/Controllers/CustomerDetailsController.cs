@@ -66,13 +66,26 @@ namespace HoneyShopWebsiteBackend.Controllers
             return BadRequest();
         }
         
-        [HttpGet("{id}")]
+        [HttpGet("retrieveById/{id}")]
         public ActionResult<CustomerDetails> GetCustomerDetailsById(int id)
         {
             var customerDetailsById = _service.GetCustomerDetailsById(id);
             if (customerDetailsById != null)
             {
                 return customerDetailsById;
+            }
+
+            return BadRequest("CustomerDetails was not found");
+        }
+        
+        [HttpGet("retrieveByUserId/{userId}")]
+        public ActionResult<List<CustomerDetails>> GetCustomerDetailsByUserId(int userId)
+        {
+            var customerDetailsByUserId = _service.GetCustomerDetailsByUserId(userId);
+            
+            if (customerDetailsByUserId != null)
+            {
+                return customerDetailsByUserId;
             }
 
             return BadRequest("CustomerDetails was not found");
