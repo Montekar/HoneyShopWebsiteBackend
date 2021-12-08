@@ -41,6 +41,16 @@ namespace HoneyShop.Core.Test.Models
             Assert.Equal(expectedLastName, _customerDetails.LastName);
             Assert.True(_customerDetails.LastName is string);
         }
+        
+        [Fact]
+        public void CustomerDetailClass_HasUserId_WithTypeInt()
+        {
+            var expected = 1;
+            
+            _customerDetails.UserId = 1;
+            Assert.Equal(expected, _customerDetails.UserId);
+            Assert.True(_customerDetails.UserId is int);
+        }
 
         [Fact]
         public void CustomerDetailClass_HasPhoneNumber_WithTypeString()

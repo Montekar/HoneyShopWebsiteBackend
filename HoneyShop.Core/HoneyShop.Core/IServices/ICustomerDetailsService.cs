@@ -10,6 +10,7 @@ namespace HoneyShop.Core.IServices
         bool UpdateCustomerDetails(CustomerDetails customerDetails);
         bool DeleteCustomerDetails(int id);
         CustomerDetails GetCustomerDetailsById(int id);
+        List<CustomerDetails> GetCustomerDetailsByUserId(int id);
     }
 
 }

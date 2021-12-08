@@ -23,6 +23,7 @@ namespace HoneyShop.DataAccess.Repositories
             return _honeyContext.CustomerDetails.Select(pe => new CustomerDetails()
             {
                 Id = pe.Id, 
+                UserId = pe.UserId,
                 FirstName = pe.FirstName,
                 LastName = pe.LastName,
                 PhoneNumber = pe.PhoneNumber,
@@ -60,6 +61,7 @@ namespace HoneyShop.DataAccess.Repositories
             var customerDetailsEntity = new CustomerDetailsEntity()
             {
                 Id = customerDetails.Id,
+                UserId = customerDetails.UserId,
                 FirstName = customerDetails.FirstName,
                 LastName = customerDetails.LastName,
                 PhoneNumber = customerDetails.PhoneNumber,
@@ -100,6 +102,7 @@ namespace HoneyShop.DataAccess.Repositories
                 return new CustomerDetails()
                 {
                     Id = customerDetailsById.Id,
+                    UserId = customerDetailsById.UserId,
                     FirstName = customerDetailsById.FirstName,
                     LastName = customerDetailsById.LastName,
                     PhoneNumber = customerDetailsById.PhoneNumber,
@@ -113,6 +116,26 @@ namespace HoneyShop.DataAccess.Repositories
             }
 
             return null;
+        }
+        
+        public List<CustomerDetails> GetCustomerDetailsByUserId(int userId)
+        {
+            var customerDetailsById =
+                _honeyContext.CustomerDetails.Where(entity => userId.Equals(entity.UserId)).Select(entity => new CustomerDetails
+                {
+                    Id = entity.Id,
+                    UserId = entity.UserId,
+                    FirstName = entity.FirstName,
+                    LastName = entity.LastName,
+                    PhoneNumber = entity.PhoneNumber,
+
+                    AddressCountry = entity.AddressCountry,
+                    AddressCity = entity.AddressCity,
+                    AddressPostCode = entity.AddressPostCode,
+                    AddressStreet = entity.AddressStreet,
+                    AddressNumber = entity.AddressNumber
+                }).ToList();
+            return customerDetailsById;
         }
     }
 }

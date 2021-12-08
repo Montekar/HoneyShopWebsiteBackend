@@ -10,5 +10,6 @@ namespace HoneyShop.Domain.IRepository
         bool UpdateCustomerDetails(CustomerDetails customerDetails);
         bool DeleteCustomerDetails(int id);
         CustomerDetails GetCustomerDetailsById(int id);
+        List<CustomerDetails> GetCustomerDetailsByUserId(int userId);
     }
 }

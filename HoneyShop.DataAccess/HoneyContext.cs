@@ -44,6 +44,11 @@ namespace HoneyShop.DataAccess
             modelBuilder.Entity<UserEntity>()
                 .HasData(new UserEntity() {Id = 1, Username = "test@gmail.com"});
 
+            modelBuilder.Entity<CustomerDetailsEntity>()
+                .HasData(new CustomerDetailsEntity {Id = 1,UserId = 10,AddressCity = "AddressCity",AddressCountry = "AddressCountry",AddressNumber = "AddressNumber"});
+            modelBuilder.Entity<CustomerDetailsEntity>()
+                .HasData(new CustomerDetailsEntity {Id = 2,UserId = 10,AddressCity = "AddressCity",AddressCountry = "AddressCountry",AddressNumber = "AddressNumber"});
+
             /*
             modelBuilder.Entity<UserEntity>()
                 .HasData(new UserEntity() {Id = 1, FirstName = "Chad", LastName = "Giga", Email = "bruh@gmail.com"});
@@ -58,7 +63,7 @@ namespace HoneyShop.DataAccess
             modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 1, Type = "Honey"});
             modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 2, Type = "Soup"});
             modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 3, Type = "BeeBread"});
-            */    
+            */
         }
         public virtual DbSet<ProductEntity> Products { get; set; }
         public virtual DbSet<CustomerDetailsEntity> CustomerDetails { get; set; }
