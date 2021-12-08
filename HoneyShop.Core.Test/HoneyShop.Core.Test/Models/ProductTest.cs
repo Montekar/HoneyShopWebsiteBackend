@@ -11,7 +11,7 @@ namespace HoneyShop.Core.Test.Models
         {
             _product = new Product();
         }
-        
+         
         [Fact]
         public void ProductClass_Exists()
         {
