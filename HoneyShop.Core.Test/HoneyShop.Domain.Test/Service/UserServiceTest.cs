@@ -21,8 +21,8 @@ namespace HoneyShop.Domain.Test.Service
             _service = new UserService(_mock.Object);
             _expected = new List<User>
             {
-                new User{Id = 1,Username = "ExpectedUsername1"},
-                new User{Id = 2,Username = "ExpectedUsername2"}
+                new User{Id = 1,Email = "ExpectedUsername1"},
+                new User{Id = 2,Email = "ExpectedUsername2"}
             };
         }
         

@@ -23,8 +23,26 @@ namespace HoneyShop.DataAccess
             modelBuilder.Entity<ProductEntity>()
                 .HasData(new ProductEntity() {Id = 4, Name = "Honey", Description = "Dark solid", Price = 5});
             
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 5, Name = "Bee Bread", Description = "Bee Bread 100g", Price = 4});
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 6, Name = "Bee Bread", Description = "Bee Bread 200g", Price = 8});
+            
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 7, Name = "Soap 1", Description = "Soap with something 1", Price = 3.5});
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 8, Name = "Soap 2", Description = "Soap with something 2", Price = 3.5});
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 9, Name = "Soap 3", Description = "Soap with something 3", Price = 3.5});
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 10, Name = "Soap 4", Description = "Soap with something 4", Price = 3.5});
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 11, Name = "Soap 5", Description = "Soap with something 5", Price = 3.5});
+            modelBuilder.Entity<ProductEntity>()
+                .HasData(new ProductEntity() {Id = 12, Name = "Soap 6", Description = "Soap with something 6", Price = 3.5});
+            
             modelBuilder.Entity<UserEntity>()
-                .HasData(new UserEntity() {Id = 1, Username = "HoneyUser"});
+                .HasData(new UserEntity() {Id = 1, Username = "test@gmail.com"});
 
             /*
             modelBuilder.Entity<UserEntity>()
@@ -47,5 +65,7 @@ namespace HoneyShop.DataAccess
         public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<OrderEntity> Order { get; set; }
 
+
+        public virtual DbSet<ShoppingCartEntity> ShoppingCartItems { get; set; }
     }
 }

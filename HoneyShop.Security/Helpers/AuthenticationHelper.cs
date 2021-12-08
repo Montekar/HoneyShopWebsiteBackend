@@ -46,7 +46,7 @@ namespace HoneyShop.Security.Helpers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Name, user.Email),
                 new Claim(ClaimTypes.Sid, user.Id.ToString())
             };
             

@@ -25,7 +25,6 @@ namespace HoneyShop.DataAccess.Repositories
                 Id = pe.Id, 
                 FirstName = pe.FirstName,
                 LastName = pe.LastName,
-                Email = pe.Email,
                 PhoneNumber = pe.PhoneNumber,
                     
                 AddressCountry = pe.AddressCountry,
@@ -43,7 +42,6 @@ namespace HoneyShop.DataAccess.Repositories
                 Id = customerDetails.Id,
                 FirstName = customerDetails.FirstName,
                 LastName = customerDetails.LastName,
-                Email = customerDetails.Email,
                 PhoneNumber = customerDetails.PhoneNumber,
 
                 AddressCountry = customerDetails.AddressCountry,
@@ -64,7 +62,6 @@ namespace HoneyShop.DataAccess.Repositories
                 Id = customerDetails.Id,
                 FirstName = customerDetails.FirstName,
                 LastName = customerDetails.LastName,
-                Email = customerDetails.Email,
                 PhoneNumber = customerDetails.PhoneNumber,
 
                 AddressCountry = customerDetails.AddressCountry,
@@ -105,7 +102,6 @@ namespace HoneyShop.DataAccess.Repositories
                     Id = customerDetailsById.Id,
                     FirstName = customerDetailsById.FirstName,
                     LastName = customerDetailsById.LastName,
-                    Email = customerDetailsById.Email,
                     PhoneNumber = customerDetailsById.PhoneNumber,
 
                     AddressCountry = customerDetailsById.AddressCountry,
