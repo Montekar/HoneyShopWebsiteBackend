@@ -16,13 +16,13 @@ namespace HoneyShop.Infrastructure.Test
 {
     public class ProductRepositoryTest
     {
-        private readonly HoneyContext _fakeContext;
+        private readonly HoneyDbContext _fakeDbContext;
         private readonly ProductRepository _productRepository;
         private readonly List<ProductEntity> _list;
         public ProductRepositoryTest()
         {
-            _fakeContext = Create.MockedDbContextFor<HoneyContext>();
-            _productRepository = new ProductRepository(_fakeContext);
+            _fakeDbContext = Create.MockedDbContextFor<HoneyDbContext>();
+            _productRepository = new ProductRepository(_fakeDbContext);
             _list = new List<ProductEntity>
             {
                 new ProductEntity()
@@ -66,8 +66,8 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void FindAll_GetAllProductsEntitiesInDBContext_AsAListOfProduct()
         {
-            _fakeContext.Set<ProductEntity>().AddRange(_list);
-            _fakeContext.SaveChanges();
+            _fakeDbContext.Set<ProductEntity>().AddRange(_list);
+            _fakeDbContext.SaveChanges();
 
             var repositoryList = _list.Select(pe => new Product()
             {
@@ -84,14 +84,14 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void DeleteProduct_DeleteProductInDBContext_ReturnBoolean()
         {
-            _fakeContext.Set<ProductEntity>().AddRange(_list);
-            _fakeContext.SaveChanges();
+            _fakeDbContext.Set<ProductEntity>().AddRange(_list);
+            _fakeDbContext.SaveChanges();
 
-            var productToRemove = _fakeContext.Products.Where(p => p.Id == 1);
+            var productToRemove = _fakeDbContext.Products.Where(p => p.Id == 1);
             if (productToRemove != null)
             {
-                _fakeContext.RemoveRange(productToRemove);
-                _fakeContext.SaveChanges();
+                _fakeDbContext.RemoveRange(productToRemove);
+                _fakeDbContext.SaveChanges();
             }
 
             var actual = _productRepository.DeleteProduct(1);
@@ -102,15 +102,15 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void UpdateProduct_UpdateProductInDBContext_ReturnProduct()
         {
-            _fakeContext.Set<ProductEntity>().AddRange(_list);
-            _fakeContext.SaveChanges();
+            _fakeDbContext.Set<ProductEntity>().AddRange(_list);
+            _fakeDbContext.SaveChanges();
             
-            var productToUpdate = _fakeContext.Products.FirstOrDefault(p => p.Id == 1);
+            var productToUpdate = _fakeDbContext.Products.FirstOrDefault(p => p.Id == 1);
             
             if (productToUpdate != null)
             {
-                _fakeContext.Update(productToUpdate);
-                _fakeContext.SaveChanges();
+                _fakeDbContext.Update(productToUpdate);
+                _fakeDbContext.SaveChanges();
             }
 
             var product = new Product()

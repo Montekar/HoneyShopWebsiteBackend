@@ -2,10 +2,10 @@
 {
     public class DbInitialize
     {
-        public static void InitData(HoneyContext context)
+        public static void InitData(HoneyDbContext dbContext)
         {
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
         }
     }
 }
