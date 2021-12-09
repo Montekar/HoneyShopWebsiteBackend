@@ -15,13 +15,13 @@ namespace HoneyShop.Infrastructure.Test
 {
     public class CustomerDetailsRepositoryTest
     {
-        private readonly HoneyContext _fakeContext;
+        private readonly HoneyDbContext _fakeDbContext;
         private readonly CustomerDetailsRepository _customerDetailsRepository;
         private readonly List<CustomerDetailsEntity> _list;
         public CustomerDetailsRepositoryTest()
         {
-            _fakeContext = Create.MockedDbContextFor<HoneyContext>();
-            _customerDetailsRepository = new CustomerDetailsRepository(_fakeContext);
+            _fakeDbContext = Create.MockedDbContextFor<HoneyDbContext>();
+            _customerDetailsRepository = new CustomerDetailsRepository(_fakeDbContext);
             _list = new List<CustomerDetailsEntity>
             {
                 new CustomerDetailsEntity()
@@ -29,6 +29,7 @@ namespace HoneyShop.Infrastructure.Test
                     Id = 1, 
                     FirstName = "Bob",
                     LastName = "TheBuilder",
+                    Email = "email@gmail.com",
                     PhoneNumber = "12345678",
                     
                     AddressCountry = "Denmark",
@@ -42,6 +43,7 @@ namespace HoneyShop.Infrastructure.Test
                     Id = 2, 
                     FirstName = "Bob2",
                     LastName = "TheBuilder2",
+                    Email = "email2@gmail.com",
                     PhoneNumber = "87654321",
                     
                     AddressCountry = "Denmark",
@@ -124,14 +126,14 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void DeleteCustomerDetails_DeleteCustomerDetailsInDBContext_ReturnBoolean()
         {
-            _fakeContext.Set<CustomerDetailsEntity>().AddRange(_list);
-            _fakeContext.SaveChanges();
+            _fakeDbContext.Set<CustomerDetailsEntity>().AddRange(_list);
+            _fakeDbContext.SaveChanges();
 
-            var customerDetailsToRemove = _fakeContext.CustomerDetails.Where(p => p.Id == 1);
+            var customerDetailsToRemove = _fakeDbContext.CustomerDetails.Where(p => p.Id == 1);
             if (customerDetailsToRemove != null)
             {
-                _fakeContext.RemoveRange(customerDetailsToRemove);
-                _fakeContext.SaveChanges();
+                _fakeDbContext.RemoveRange(customerDetailsToRemove);
+                _fakeDbContext.SaveChanges();
             }
 
             var actual = _customerDetailsRepository.DeleteCustomerDetails(1);

@@ -10,15 +10,15 @@ namespace HoneyShop.DataAccess.Repositories
 {
     public class ProductRepository: IProductRepository
     {
-        private readonly HoneyContext _honeyContext;
+        private readonly HoneyDbContext _honeyDbContext;
 
-        public ProductRepository(HoneyContext honeyContext)
+        public ProductRepository(HoneyDbContext honeyDbContext)
         {
-            _honeyContext = honeyContext ?? throw new InvalidDataException("Product Repository must have a DB context in constructor");
+            _honeyDbContext = honeyDbContext ?? throw new InvalidDataException("Product Repository must have a DB context in constructor");
         }
         public List<Product> GetAllProducts()
         {
-            return _honeyContext.Products.Select(pe => new Product()
+            return _honeyDbContext.Products.Select(pe => new Product()
             {
                 Id = pe.Id,
                 Name = pe.Name,
@@ -29,11 +29,11 @@ namespace HoneyShop.DataAccess.Repositories
 
         public bool DeleteProduct(int id)
         {
-            var productToRemove = _honeyContext.Products.Where(p => p.Id == id);
+            var productToRemove = _honeyDbContext.Products.Where(p => p.Id == id);
             if (productToRemove != null)
             {
-                _honeyContext.RemoveRange(productToRemove);
-                _honeyContext.SaveChanges();
+                _honeyDbContext.RemoveRange(productToRemove);
+                _honeyDbContext.SaveChanges();
                 return true;
             }
             return false;
@@ -44,8 +44,8 @@ namespace HoneyShop.DataAccess.Repositories
 
             if (product != null)
             {
-                _honeyContext.Update(product);
-                _honeyContext.SaveChanges();
+                _honeyDbContext.Update(product);
+                _honeyDbContext.SaveChanges();
                 return true;
             }
 
@@ -61,14 +61,14 @@ namespace HoneyShop.DataAccess.Repositories
                 Description = product.Description,
                 Price = product.Price
             };
-            _honeyContext.Products.Attach(productEntity).State = EntityState.Added;
-            _honeyContext.SaveChanges();
+            _honeyDbContext.Products.Attach(productEntity).State = EntityState.Added;
+            _honeyDbContext.SaveChanges();
             return true;
         }
 
         public Product GetProductById(int id)
         {
-            var productById = _honeyContext.Products.FirstOrDefault(product => id.Equals(product.Id));
+            var productById = _honeyDbContext.Products.FirstOrDefault(product => id.Equals(product.Id));
             if (productById != null)
             {
                 return new Product()

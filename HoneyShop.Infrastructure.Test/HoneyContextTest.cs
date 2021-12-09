@@ -11,14 +11,14 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void UserRepository_IsIUserRepository()
         {
-            var mockedDbContext = Create.MockedDbContextFor<HoneyContext>();
+            var mockedDbContext = Create.MockedDbContextFor<HoneyDbContext>();
             Assert.NotNull(mockedDbContext);
         }
 
         [Fact]
         public void HoneyContext_DbSets_MustHaveDbSetWithTypeUser()
         {
-            var mockedDbContext = Create.MockedDbContextFor<HoneyContext>();
+            var mockedDbContext = Create.MockedDbContextFor<HoneyDbContext>();
             Assert.True(mockedDbContext.Users is DbSet<UserEntity>);
         }
     }

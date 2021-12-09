@@ -4,16 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HoneyShop.DataAccess
 {
-    public class HoneyContext: DbContext
+    public class HoneyDbContext: DbContext
     {
-        public HoneyContext(DbContextOptions<HoneyContext> options): base(options){}
+        public HoneyDbContext(DbContextOptions<HoneyDbContext> options): base(options){}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
-            //modelBuilder.Entity<ProductEntity>().HasOne(o => o.Type).WithMany(p => p.Products);
-            
             modelBuilder.Entity<ProductEntity>()
                 .HasData(new ProductEntity() {Id = 1, Name = "Honey", Description = "Bright fresh", Price = 5});
             modelBuilder.Entity<ProductEntity>()
@@ -43,34 +40,14 @@ namespace HoneyShop.DataAccess
             
             modelBuilder.Entity<UserEntity>()
                 .HasData(new UserEntity() {Id = 1, Username = "test@gmail.com"});
-
             modelBuilder.Entity<CustomerDetailsEntity>()
-                .HasData(new CustomerDetailsEntity {Id = 1,UserId = 10,AddressCity = "AddressCity",AddressCountry = "AddressCountry",AddressNumber = "AddressNumber"});
-            modelBuilder.Entity<CustomerDetailsEntity>()
-                .HasData(new CustomerDetailsEntity {Id = 2,UserId = 10,AddressCity = "AddressCity",AddressCountry = "AddressCountry",AddressNumber = "AddressNumber"});
-
-            /*
-            modelBuilder.Entity<UserEntity>()
-                .HasData(new UserEntity() {Id = 1, FirstName = "Chad", LastName = "Giga", Email = "bruh@gmail.com"});
-            modelBuilder.Entity<UserEntity>()
-                .HasData(new UserEntity() {Id = 2, FirstName = "Sonic", LastName = "Speed", Email = "light@gmail.com"});
-                
-            modelBuilder.Entity<AdminEntity>()
-                .HasData(new AdminEntity() {Id = 1, FirstName = "Chad", LastName = "Giga", Email = "bruh@gmail.com"});
-            modelBuilder.Entity<AdminEntity>()
-                .HasData(new AdminEntity() {Id = 2, FirstName = "Sonic", LastName = "Speed", Email = "light@gmail.com"});
-            
-            modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 1, Type = "Honey"});
-            modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 2, Type = "Soup"});
-            modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 3, Type = "BeeBread"});
-            */
+                .HasData(new CustomerDetailsEntity() {Id = 1, Email = "email", AddressCity = "AddressCity"});
         }
         public virtual DbSet<ProductEntity> Products { get; set; }
         public virtual DbSet<CustomerDetailsEntity> CustomerDetails { get; set; }
         public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<OrderEntity> Order { get; set; }
-
-
+        
         public virtual DbSet<ShoppingCartEntity> ShoppingCartItems { get; set; }
     }
 }

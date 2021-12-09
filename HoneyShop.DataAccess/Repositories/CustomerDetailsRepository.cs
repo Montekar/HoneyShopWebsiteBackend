@@ -11,16 +11,16 @@ namespace HoneyShop.DataAccess.Repositories
 {
     public class CustomerDetailsRepository: ICustomerDetailsRepository
     {
-        private readonly HoneyContext _honeyContext;
+        private readonly HoneyDbContext _honeyDbContext;
 
-        public CustomerDetailsRepository(HoneyContext honeyContext)
+        public CustomerDetailsRepository(HoneyDbContext honeyDbContext)
         {
-            _honeyContext = honeyContext ?? throw new InvalidDataException("CustomerDetails Repository must have a DB context in constructor");
+            _honeyDbContext = honeyDbContext ?? throw new InvalidDataException("CustomerDetails Repository must have a DB context in constructor");
         }
 
         public List<CustomerDetails> GetAllCustomerDetails()
         {
-            return _honeyContext.CustomerDetails.Select(pe => new CustomerDetails()
+            return _honeyDbContext.CustomerDetails.Select(pe => new CustomerDetails()
             {
                 Id = pe.Id, 
                 UserId = pe.UserId,
@@ -41,6 +41,7 @@ namespace HoneyShop.DataAccess.Repositories
             var customerDetailsEntity = new CustomerDetailsEntity()
             {
                 Id = customerDetails.Id,
+                UserId = customerDetails.UserId,
                 FirstName = customerDetails.FirstName,
                 LastName = customerDetails.LastName,
                 PhoneNumber = customerDetails.PhoneNumber,
@@ -51,8 +52,8 @@ namespace HoneyShop.DataAccess.Repositories
                 AddressStreet = customerDetails.AddressStreet,
                 AddressNumber = customerDetails.AddressNumber
             };
-            _honeyContext.CustomerDetails.Attach(customerDetailsEntity).State = EntityState.Added;
-            _honeyContext.SaveChanges();
+            _honeyDbContext.CustomerDetails.Attach(customerDetailsEntity).State = EntityState.Added;
+            _honeyDbContext.SaveChanges();
             return true;
         }
 
@@ -61,7 +62,6 @@ namespace HoneyShop.DataAccess.Repositories
             var customerDetailsEntity = new CustomerDetailsEntity()
             {
                 Id = customerDetails.Id,
-                UserId = customerDetails.UserId,
                 FirstName = customerDetails.FirstName,
                 LastName = customerDetails.LastName,
                 PhoneNumber = customerDetails.PhoneNumber,
@@ -74,8 +74,8 @@ namespace HoneyShop.DataAccess.Repositories
             };
             if (customerDetailsEntity != null)
             {
-                _honeyContext.Attach(customerDetailsEntity).State = EntityState.Modified;
-                _honeyContext.SaveChanges();
+                _honeyDbContext.Attach(customerDetailsEntity).State = EntityState.Modified;
+                _honeyDbContext.SaveChanges();
                 return true;
             }
 
@@ -84,11 +84,11 @@ namespace HoneyShop.DataAccess.Repositories
 
         public bool DeleteCustomerDetails(int id)
         {
-            var customerDetailsToRemove = _honeyContext.CustomerDetails.Where(p => p.Id == id);
+            var customerDetailsToRemove = _honeyDbContext.CustomerDetails.Where(p => p.Id == id);
             if (customerDetailsToRemove != null)
             {
-                _honeyContext.RemoveRange(customerDetailsToRemove);
-                _honeyContext.SaveChanges();
+                _honeyDbContext.RemoveRange(customerDetailsToRemove);
+                _honeyDbContext.SaveChanges();
                 return true;
             }
             return false;
@@ -96,7 +96,7 @@ namespace HoneyShop.DataAccess.Repositories
 
         public CustomerDetails GetCustomerDetailsById(int id)
         {
-            var customerDetailsById = _honeyContext.CustomerDetails.FirstOrDefault(customerDetails => id.Equals(customerDetails.Id));
+            var customerDetailsById = _honeyDbContext.CustomerDetails.FirstOrDefault(customerDetails => id.Equals(customerDetails.Id));
             if (customerDetailsById != null)
             {
                 return new CustomerDetails()
@@ -117,11 +117,10 @@ namespace HoneyShop.DataAccess.Repositories
 
             return null;
         }
-        
         public List<CustomerDetails> GetCustomerDetailsByUserId(int userId)
         {
             var customerDetailsById =
-                _honeyContext.CustomerDetails.Where(entity => userId.Equals(entity.UserId)).Select(entity => new CustomerDetails
+                _honeyDbContext.CustomerDetails.Where(entity => userId.Equals(entity.UserId)).Select(entity => new CustomerDetails
                 {
                     Id = entity.Id,
                     UserId = entity.UserId,

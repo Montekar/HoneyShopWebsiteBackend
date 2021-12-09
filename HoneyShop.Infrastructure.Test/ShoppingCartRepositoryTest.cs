@@ -15,14 +15,14 @@ namespace HoneyShop.Infrastructure.Test
 {
     public class ShoppingCartRepositoryTest
     {
-        private readonly HoneyContext _context;
+        private readonly HoneyDbContext _dbContext;
         private readonly ShoppingCartRepository _repository;
         private readonly List<ShoppingCartEntity> _list;
 
         public ShoppingCartRepositoryTest()
         {
-            _context = Create.MockedDbContextFor<HoneyContext>();
-            _repository = new ShoppingCartRepository(_context);
+            _dbContext = Create.MockedDbContextFor<HoneyDbContext>();
+            _repository = new ShoppingCartRepository(_dbContext);
             _list = new List<ShoppingCartEntity>()
             {
                 new ShoppingCartEntity()
@@ -56,8 +56,8 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void GetAllItems_ReturnsAllItems_AsListOfShoppingCart()
         {
-            _context.Set<ShoppingCartEntity>().AddRange(_list);
-            _context.SaveChanges();
+            _dbContext.Set<ShoppingCartEntity>().AddRange(_list);
+            _dbContext.SaveChanges();
 
             var repositoryList = _list.Select(sc => new ShoppingCart()
             {
@@ -79,14 +79,14 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void DeleteItem_ReturnsDeleteItem()
         {
-            _context.Set<ShoppingCartEntity>().AddRange(_list);
-            _context.SaveChanges();
+            _dbContext.Set<ShoppingCartEntity>().AddRange(_list);
+            _dbContext.SaveChanges();
 
-            var itemRemoved = _context.ShoppingCartItems.Where(sc => sc.Id == 1);
+            var itemRemoved = _dbContext.ShoppingCartItems.Where(sc => sc.Id == 1);
             if (itemRemoved != null)
             {
-                _context.RemoveRange(itemRemoved);
-                _context.SaveChanges();
+                _dbContext.RemoveRange(itemRemoved);
+                _dbContext.SaveChanges();
             }
             
             //Check
@@ -97,8 +97,8 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void AddItem_ReturnsItemAdded()
         {
-            _context.Set<ShoppingCartEntity>().AddRange(_list);
-            _context.SaveChanges();
+            _dbContext.Set<ShoppingCartEntity>().AddRange(_list);
+            _dbContext.SaveChanges();
 
             var repositoryList = _list.Select(sc => new ShoppingCart()
             {
@@ -120,15 +120,15 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void UpdateItem_ReturnsItemUpdated()
         {
-            _context.Set<ShoppingCartEntity>().AddRange(_list);
-            _context.SaveChanges();
+            _dbContext.Set<ShoppingCartEntity>().AddRange(_list);
+            _dbContext.SaveChanges();
             
-            var itemToBeUpdated = _context.ShoppingCartItems.FirstOrDefault(sc => sc.Id == 1);
+            var itemToBeUpdated = _dbContext.ShoppingCartItems.FirstOrDefault(sc => sc.Id == 1);
 
             if (itemToBeUpdated != null)
             {
-                _context.Update(itemToBeUpdated);
-                _context.SaveChanges();
+                _dbContext.Update(itemToBeUpdated);
+                _dbContext.SaveChanges();
             }
 
             var item = new ShoppingCart()
@@ -151,15 +151,15 @@ namespace HoneyShop.Infrastructure.Test
         [Fact]
         public void ItemById_ReturnsItem()
         {
-            _context.Set<ShoppingCartEntity>().AddRange(_list);
-            _context.SaveChanges();
+            _dbContext.Set<ShoppingCartEntity>().AddRange(_list);
+            _dbContext.SaveChanges();
             
-            var expectedItem = _context.ShoppingCartItems.FirstOrDefault(sc => sc.Id == 1);
+            var expectedItem = _dbContext.ShoppingCartItems.FirstOrDefault(sc => sc.Id == 1);
             
             if (expectedItem != null)
             {
-                _context.Update(expectedItem);
-                _context.SaveChanges();
+                _dbContext.Update(expectedItem);
+                _dbContext.SaveChanges();
             }
 
             var item = new ShoppingCart()

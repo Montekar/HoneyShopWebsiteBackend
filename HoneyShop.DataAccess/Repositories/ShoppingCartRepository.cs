@@ -11,16 +11,16 @@ namespace HoneyShop.DataAccess.Repositories
 {
     public class ShoppingCartRepository: IShoppingCartRepository
     {
-        private readonly HoneyContext _context;
+        private readonly HoneyDbContext _dbContext;
 
-        public ShoppingCartRepository(HoneyContext context)
+        public ShoppingCartRepository(HoneyDbContext dbContext)
         {
-            _context = context ?? throw new InvalidDataException("Shopping Cart Repository must have a DB context in constructor");
+            _dbContext = dbContext ?? throw new InvalidDataException("Shopping Cart Repository must have a DB context in constructor");
         }
 
         public List<ShoppingCart> GetAllItems()
         {
-            return _context.ShoppingCartItems.Select(sc => new ShoppingCart()
+            return _dbContext.ShoppingCartItems.Select(sc => new ShoppingCart()
             {
                 Id = sc.Id,
                 Product = new Product()
@@ -36,11 +36,11 @@ namespace HoneyShop.DataAccess.Repositories
 
         public ShoppingCart DeleteItem(int id)
         {
-            var itemRemoved = _context.ShoppingCartItems.FirstOrDefault(sc => sc.Id == id);
+            var itemRemoved = _dbContext.ShoppingCartItems.FirstOrDefault(sc => sc.Id == id);
             if (itemRemoved != null)
             {
-                _context.RemoveRange(itemRemoved);
-                _context.SaveChanges();
+                _dbContext.RemoveRange(itemRemoved);
+                _dbContext.SaveChanges();
                 return new ShoppingCart()
                 {
                     Id = itemRemoved.Id,
@@ -72,8 +72,8 @@ namespace HoneyShop.DataAccess.Repositories
                 Amount = shoppingCartItem.Amount
             };
 
-            _context.ShoppingCartItems.Attach(shoppingCartEntity).State = EntityState.Added;
-            _context.SaveChanges();
+            _dbContext.ShoppingCartItems.Attach(shoppingCartEntity).State = EntityState.Added;
+            _dbContext.SaveChanges();
             return shoppingCartItem;
         }
 
@@ -81,8 +81,8 @@ namespace HoneyShop.DataAccess.Repositories
         {
             if (shoppingCartItem != null)
             {
-                _context.Update(shoppingCartItem);
-                _context.SaveChanges();
+                _dbContext.Update(shoppingCartItem);
+                _dbContext.SaveChanges();
                 return shoppingCartItem;
             }
 
@@ -91,7 +91,7 @@ namespace HoneyShop.DataAccess.Repositories
 
         public ShoppingCart GetItemById(int id)
         {
-            var itemRemoved = _context.ShoppingCartItems.FirstOrDefault(sc => sc.Id == id);
+            var itemRemoved = _dbContext.ShoppingCartItems.FirstOrDefault(sc => sc.Id == id);
             if (itemRemoved != null)
             {
                 return new ShoppingCart()

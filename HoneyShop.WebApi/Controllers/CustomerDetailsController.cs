@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HoneyShop.Core.IServices;
 using HoneyShop.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,6 +38,7 @@ namespace HoneyShopWebsiteBackend.Controllers
             return BadRequest("CustomerDetails was not created");
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult<List<CustomerDetails>> GetAll()
         {
@@ -82,7 +84,7 @@ namespace HoneyShopWebsiteBackend.Controllers
         public ActionResult<List<CustomerDetails>> GetCustomerDetailsByUserId(int userId)
         {
             var customerDetailsByUserId = _service.GetCustomerDetailsByUserId(userId);
-            
+
             if (customerDetailsByUserId != null)
             {
                 return customerDetailsByUserId;

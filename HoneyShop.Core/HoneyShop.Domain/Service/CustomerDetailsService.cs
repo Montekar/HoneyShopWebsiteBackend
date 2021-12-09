@@ -39,7 +39,6 @@ namespace HoneyShop.Domain.Service
         {
             return _customerDetailsRepository.GetCustomerDetailsById(id);
         }
-
         public List<CustomerDetails> GetCustomerDetailsByUserId(int userId)
         {
             return _customerDetailsRepository.GetCustomerDetailsByUserId(userId);

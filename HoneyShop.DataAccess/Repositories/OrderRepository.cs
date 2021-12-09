@@ -31,9 +31,9 @@ namespace HoneyShop.DataAccess.Repositories
 
     public class OrderRepository : IOrderRepository
     {
-        private readonly HoneyContext _honeyContext;
+        private readonly HoneyDbContext _honeyContext;
 
-        public OrderRepository(HoneyContext honeyContext)
+        public OrderRepository(HoneyDbContext honeyContext)
         {
             _honeyContext = honeyContext ?? throw new InvalidDataException("Product Repository must have a DB context in constructor");
         }
