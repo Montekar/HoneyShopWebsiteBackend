@@ -37,17 +37,11 @@ namespace HoneyShop.DataAccess
                 .HasData(new ProductEntity() {Id = 11, Name = "Soap 5", Description = "Soap with something 5", Price = 3.5});
             modelBuilder.Entity<ProductEntity>()
                 .HasData(new ProductEntity() {Id = 12, Name = "Soap 6", Description = "Soap with something 6", Price = 3.5});
-            
-            modelBuilder.Entity<UserEntity>()
-                .HasData(new UserEntity() {Id = 1, Username = "test@gmail.com"});
-            modelBuilder.Entity<CustomerDetailsEntity>()
-                .HasData(new CustomerDetailsEntity() {Id = 1, Email = "email", AddressCity = "AddressCity"});
         }
         public virtual DbSet<ProductEntity> Products { get; set; }
         public virtual DbSet<CustomerDetailsEntity> CustomerDetails { get; set; }
         public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<OrderEntity> Order { get; set; }
-        
         public virtual DbSet<ShoppingCartEntity> ShoppingCartItems { get; set; }
     }
 }

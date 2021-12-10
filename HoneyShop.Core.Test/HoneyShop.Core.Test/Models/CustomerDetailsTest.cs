@@ -78,11 +78,11 @@ namespace HoneyShop.Core.Test.Models
         [Fact]
         public void CustomerDetailClass_HasAddress_PostCode_WithTypeInt()
         {
-            var expected = 6500;
-            _customerDetails.AddressPostCode = 6500;
+            var expected = "6500";
+            _customerDetails.AddressPostCode = "6500";
 
             Assert.Equal(expected, _customerDetails.AddressPostCode);
-            Assert.True(_customerDetails.AddressPostCode is int);
+            Assert.True(_customerDetails.AddressPostCode is string);
         }
 
         [Fact]

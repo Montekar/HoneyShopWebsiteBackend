@@ -36,7 +36,40 @@ namespace HoneyShop.DataAccess.Repositories
             }).ToList();
         }
         
-        public bool CreateCustomerDetails(CustomerDetails customerDetails)
+        public CustomerDetails CreateCustomerDetails(CustomerDetails customerDetails)
+        {
+            var customerDetailsEntity = new CustomerDetailsEntity()
+            {
+                UserId = customerDetails.UserId,
+                FirstName = customerDetails.FirstName,
+                LastName = customerDetails.LastName,
+                PhoneNumber = customerDetails.PhoneNumber,
+
+                AddressCountry = customerDetails.AddressCountry,
+                AddressCity = customerDetails.AddressCity,
+                AddressPostCode = customerDetails.AddressPostCode,
+                AddressStreet = customerDetails.AddressStreet,
+                AddressNumber = customerDetails.AddressNumber
+            };
+            var savedEntity = _honeyDbContext.CustomerDetails.Add(customerDetailsEntity).Entity;
+            _honeyDbContext.SaveChanges();
+            return new CustomerDetails
+            {
+                Id = savedEntity.Id,
+                UserId = savedEntity.UserId,
+                FirstName = savedEntity.FirstName,
+                LastName = savedEntity.LastName,
+                PhoneNumber = savedEntity.PhoneNumber,
+
+                AddressCountry = savedEntity.AddressCountry,
+                AddressCity = savedEntity.AddressCity,
+                AddressPostCode = savedEntity.AddressPostCode,
+                AddressStreet = savedEntity.AddressStreet,
+                AddressNumber = savedEntity.AddressNumber
+            };
+        }
+
+        public CustomerDetails UpdateCustomerDetails(CustomerDetails customerDetails)
         {
             var customerDetailsEntity = new CustomerDetailsEntity()
             {
@@ -52,46 +85,48 @@ namespace HoneyShop.DataAccess.Repositories
                 AddressStreet = customerDetails.AddressStreet,
                 AddressNumber = customerDetails.AddressNumber
             };
-            _honeyDbContext.CustomerDetails.Attach(customerDetailsEntity).State = EntityState.Added;
+            _honeyDbContext.Attach(customerDetailsEntity).State = EntityState.Modified;
+                _honeyDbContext.SaveChanges();
+
+                return new CustomerDetails
+                {
+                    Id = customerDetails.Id,
+                    UserId = customerDetails.UserId,
+                    FirstName = customerDetails.FirstName,
+                    LastName = customerDetails.LastName,
+                    PhoneNumber = customerDetails.PhoneNumber,
+
+                    AddressCountry = customerDetails.AddressCountry,
+                    AddressCity = customerDetails.AddressCity,
+                    AddressPostCode = customerDetails.AddressPostCode,
+                    AddressStreet = customerDetails.AddressStreet,
+                    AddressNumber = customerDetails.AddressNumber
+                };
+        }
+
+        public CustomerDetails DeleteCustomerDetails(int id)
+        {
+            var entity = _honeyDbContext.CustomerDetails.FirstOrDefault(detailsEntity => detailsEntity.Id == id);
+            if (entity == null)
+            {
+                return null;
+            }
+            var deletedEntity = _honeyDbContext.Remove(entity).Entity;
             _honeyDbContext.SaveChanges();
-            return true;
-        }
-
-        public bool UpdateCustomerDetails(CustomerDetails customerDetails)
-        {
-            var customerDetailsEntity = new CustomerDetailsEntity()
+            return new CustomerDetails
             {
-                Id = customerDetails.Id,
-                FirstName = customerDetails.FirstName,
-                LastName = customerDetails.LastName,
-                PhoneNumber = customerDetails.PhoneNumber,
+                Id = deletedEntity.Id,
+                UserId = deletedEntity.UserId,
+                FirstName = deletedEntity.FirstName,
+                LastName = deletedEntity.LastName,
+                PhoneNumber = deletedEntity.PhoneNumber,
 
-                AddressCountry = customerDetails.AddressCountry,
-                AddressCity = customerDetails.AddressCity,
-                AddressPostCode = customerDetails.AddressPostCode,
-                AddressStreet = customerDetails.AddressStreet,
-                AddressNumber = customerDetails.AddressNumber
+                AddressCountry = deletedEntity.AddressCountry,
+                AddressCity = deletedEntity.AddressCity,
+                AddressPostCode = deletedEntity.AddressPostCode,
+                AddressStreet = deletedEntity.AddressStreet,
+                AddressNumber = deletedEntity.AddressNumber
             };
-            if (customerDetailsEntity != null)
-            {
-                _honeyDbContext.Attach(customerDetailsEntity).State = EntityState.Modified;
-                _honeyDbContext.SaveChanges();
-                return true;
-            }
-
-            return false;
-        }
-
-        public bool DeleteCustomerDetails(int id)
-        {
-            var customerDetailsToRemove = _honeyDbContext.CustomerDetails.Where(p => p.Id == id);
-            if (customerDetailsToRemove != null)
-            {
-                _honeyDbContext.RemoveRange(customerDetailsToRemove);
-                _honeyDbContext.SaveChanges();
-                return true;
-            }
-            return false;
         }
 
         public CustomerDetails GetCustomerDetailsById(int id)

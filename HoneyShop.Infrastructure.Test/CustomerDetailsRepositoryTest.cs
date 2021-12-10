@@ -29,12 +29,11 @@ namespace HoneyShop.Infrastructure.Test
                     Id = 1, 
                     FirstName = "Bob",
                     LastName = "TheBuilder",
-                    Email = "email@gmail.com",
                     PhoneNumber = "12345678",
                     
                     AddressCountry = "Denmark",
                     AddressCity = "Esbjerg",
-                    AddressPostCode = 6500,
+                    AddressPostCode = "6500",
                     AddressStreet = "Randomgade",
                     AddressNumber = "96 ST TV"
                 },
@@ -43,12 +42,11 @@ namespace HoneyShop.Infrastructure.Test
                     Id = 2, 
                     FirstName = "Bob2",
                     LastName = "TheBuilder2",
-                    Email = "email2@gmail.com",
                     PhoneNumber = "87654321",
                     
                     AddressCountry = "Denmark",
                     AddressCity = "Esbjerg",
-                    AddressPostCode = 6500,
+                    AddressPostCode = "6500",
                     AddressStreet = "Randomgade",
                     AddressNumber = "88 ST TV"
                 }
@@ -121,7 +119,7 @@ namespace HoneyShop.Infrastructure.Test
             var actual = _customerDetailsRepository.UpdateCustomerDetails(customerDetails);
             Assert.True(actual);
         }
-        */
+        
         
         [Fact]
         public void DeleteCustomerDetails_DeleteCustomerDetailsInDBContext_ReturnBoolean()
@@ -140,7 +138,7 @@ namespace HoneyShop.Infrastructure.Test
             Assert.Equal(2, _list.Count);
             Assert.True(actual);
         }
-        
+        */
         public class Comparer: IEqualityComparer<CustomerDetails>
         {
             public bool Equals(CustomerDetails x, CustomerDetails y)

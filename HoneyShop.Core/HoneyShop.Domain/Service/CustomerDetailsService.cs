@@ -20,17 +20,17 @@ namespace HoneyShop.Domain.Service
             return _customerDetailsRepository.GetAllCustomerDetails();
         }
 
-        public bool CreateCustomerDetails(CustomerDetails customerDetails)
+        public CustomerDetails CreateCustomerDetails(CustomerDetails customerDetails)
         {
             return _customerDetailsRepository.CreateCustomerDetails(customerDetails);
         }
         
-        public bool UpdateCustomerDetails(CustomerDetails customerDetails)
+        public CustomerDetails UpdateCustomerDetails(CustomerDetails customerDetails)
         {
             return _customerDetailsRepository.UpdateCustomerDetails(customerDetails);
         }
         
-        public bool DeleteCustomerDetails(int id)
+        public CustomerDetails DeleteCustomerDetails(int id)
         {
             return _customerDetailsRepository.DeleteCustomerDetails(id);
         }
