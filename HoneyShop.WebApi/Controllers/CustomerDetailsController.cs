@@ -25,20 +25,20 @@ namespace HoneyShopWebsiteBackend.Controllers
         [HttpPost]
         public ActionResult<CustomerDetails> CreateCustomerDetails([FromBody] CustomerDetails customerDetails)
         {
+            if (customerDetails.UserId <= 0)
+            {
+                return BadRequest("UserId cant be 0 or less");
+            }
             if (string.IsNullOrEmpty(customerDetails.FirstName))
             {
                 return BadRequest("Name is required");
             }
             var createCustomerDetails = _service.CreateCustomerDetails(customerDetails);
-            if (createCustomerDetails)
-            {
-                return Ok("CustomerDetails was created");
-            }
+            
 
-            return BadRequest("CustomerDetails was not created");
+                return Ok(createCustomerDetails);
         }
-
-        [Authorize]
+        
         [HttpGet]
         public ActionResult<List<CustomerDetails>> GetAll()
         {
@@ -48,24 +48,21 @@ namespace HoneyShopWebsiteBackend.Controllers
         [HttpPut]
         public ActionResult<CustomerDetails> UpdateCustomerDetails([FromBody] CustomerDetails customerDetails)
         {
-            var updateCustomerDetails = _service.UpdateCustomerDetails(customerDetails);
-            if (updateCustomerDetails)
+            if (customerDetails.UserId <= 0)
             {
-                return Ok("CustomerDetails was updated");
+                return BadRequest("UserId cant be 0 or less");
             }
+            var updateCustomerDetails = _service.UpdateCustomerDetails(customerDetails);
 
-            return BadRequest("CustomerDetails couldn't be updated");
+            return Ok(updateCustomerDetails);
         }
 
         [HttpDelete("{id}")]
         public ActionResult<CustomerDetails> DeleteCustomerDetails(int id)
         {
             var deletedCustomerDetails = _service.DeleteCustomerDetails(id);
-            if (deletedCustomerDetails)
-            {
-                return Ok();
-            }
-            return BadRequest();
+            
+            return Ok(deletedCustomerDetails);
         }
         
         [HttpGet("retrieveById/{id}")]
