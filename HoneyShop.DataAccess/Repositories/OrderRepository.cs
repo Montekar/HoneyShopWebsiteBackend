@@ -35,32 +35,52 @@ namespace HoneyShop.DataAccess.Repositories
 
         public OrderRepository(HoneyContext honeyContext)
         {
-            _honeyContext = honeyContext ?? throw new InvalidDataException("Product Repository must have a DB context in constructor");
+            _honeyContext = honeyContext ??
+                            throw new InvalidDataException("Product Repository must have a DB context in constructor");
         }
-        
+
         public Order ReadSingleOrder(int orderId)
         {
-
             return _honeyContext.Order
-                .Select(o => new Order()
+                .Include(o => o.OrderLines)
+                .ThenInclude(ol => ol.Product)
+                .Select(o => new Order
                 {
                     Id = o.Id,
                     CustomerId = o.CustomerId,
-                    ProductList = o.ProductList,
+                    ProductList = o.OrderLines != null
+                        ? o.OrderLines.Select(ol => new Product
+                        {
+                            Id = ol.ProductId,
+                            Description = ol.Product.Description,
+                            Name = ol.Product.Name,
+                            Price = ol.Product.Price
+                        }).ToList()
+                        : null,
                     OrderCompleted = o.OrderCompleted
                 }).FirstOrDefault(i => i.Id == orderId);
-        } 
+        }
 
         public List<Order> ReadAllOrders()
         {
-            return _honeyContext.Order.Select(oe => new Order()
-            {
-                Id = oe.Id,
-                OrderCompleted = oe.OrderCompleted,
-                CustomerId = oe.CustomerId,
-                ProductList = oe.ProductList
-            }).ToList();
-        
+            return _honeyContext.Order
+                .Include(o => o.OrderLines)
+                .ThenInclude(ol => ol.Product)
+                .Select(o => new Order
+                {
+                    Id = o.Id,
+                    OrderCompleted = o.OrderCompleted,
+                    CustomerId = o.CustomerId,
+                    ProductList = o.OrderLines != null
+                        ? o.OrderLines.Select(ol => new Product
+                        {
+                            Id = ol.ProductId,
+                            Description = ol.Product.Description,
+                            Name = ol.Product.Name,
+                            Price = ol.Product.Price
+                        }).ToList()
+                        : null
+                }).ToList();
         }
 
         public bool DeleteOrder(int OrderId)
@@ -72,41 +92,79 @@ namespace HoneyShop.DataAccess.Repositories
                 _honeyContext.SaveChanges();
                 return true;
             }
+
             return false;
         }
-        
+
 
         public bool CreateOrder(Order order)
         {
-            var orderEntity = new OrderEntity()
+            var orderEntity = new OrderEntity
             {
                 Id = order.Id,
                 OrderCompleted = order.OrderCompleted,
-                ProductList = order.ProductList
-          
+                OrderLines = order.ProductList != null
+                    ? order.ProductList.Select(p => new OrderLineEntity()
+                    {
+                        ProductId = p.Id,
+                        Product = new ProductEntity()
+                        {
+                            Id = p.Id,
+                            Name = p.Name,
+                            Description = p.Description,
+                            Price = p.Price
+                        },
+                        OrderId = order.Id,
+                        Order = new OrderEntity()
+                        {
+                            OrderCompleted = order.OrderCompleted,
+                            Id = order.Id,
+                            CustomerId = order.CustomerId,
+                        }
+                    }).ToList()
+                    : null,
             };
             _honeyContext.Order.Attach(orderEntity).State = EntityState.Added;
             _honeyContext.SaveChanges();
-            return true;        }
+            return true;
+        }
 
         public bool EditOrder(Order order)
         {
             if (order != null)
             {
-                var orderEntity = new OrderEntity()
+                var orderEntity = new OrderEntity
                 {
                     Id = order.Id,
                     CustomerId = order.CustomerId,
-                    ProductList = order.ProductList,
+                    OrderLines = order.ProductList != null
+                        ? order.ProductList.Select(p => new OrderLineEntity()
+                        {
+                            ProductId = p.Id,
+                            Product = new ProductEntity()
+                            {
+                                Id = p.Id,
+                                Name = p.Name,
+                                Description = p.Description,
+                                Price = p.Price
+                            },
+                            OrderId = order.Id,
+                            Order = new OrderEntity()
+                            {
+                                OrderCompleted = order.OrderCompleted,
+                                Id = order.Id,
+                                CustomerId = order.CustomerId,
+                            }
+                        }).ToList()
+                        : null,
                     OrderCompleted = order.OrderCompleted
                 };
                 var savedEntity = _honeyContext.Order.Update(orderEntity).Entity;
                 _honeyContext.SaveChanges();
                 return true;
             }
+
             return false;
         }
-
-
     }
 }

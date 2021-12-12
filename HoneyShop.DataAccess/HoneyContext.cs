@@ -49,28 +49,16 @@ namespace HoneyShop.DataAccess
             modelBuilder.Entity<CustomerDetailsEntity>()
                 .HasData(new CustomerDetailsEntity {Id = 2,UserId = 10,AddressCity = "AddressCity",AddressCountry = "AddressCountry",AddressNumber = "AddressNumber"});
 
-            /*
-            modelBuilder.Entity<UserEntity>()
-                .HasData(new UserEntity() {Id = 1, FirstName = "Chad", LastName = "Giga", Email = "bruh@gmail.com"});
-            modelBuilder.Entity<UserEntity>()
-                .HasData(new UserEntity() {Id = 2, FirstName = "Sonic", LastName = "Speed", Email = "light@gmail.com"});
-                
-            modelBuilder.Entity<AdminEntity>()
-                .HasData(new AdminEntity() {Id = 1, FirstName = "Chad", LastName = "Giga", Email = "bruh@gmail.com"});
-            modelBuilder.Entity<AdminEntity>()
-                .HasData(new AdminEntity() {Id = 2, FirstName = "Sonic", LastName = "Speed", Email = "light@gmail.com"});
-            
-            modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 1, Type = "Honey"});
-            modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 2, Type = "Soup"});
-            modelBuilder.Entity<ProductTypeEntity>().HasData(new ProductTypeEntity() {Id = 3, Type = "BeeBread"});
-            */
+            modelBuilder.Entity<OrderLineEntity>().HasKey(ol => new { ol.OrderId, ol.ProductId });
+
+            modelBuilder.Entity<OrderLineEntity>().HasOne(ol => ol.Product).WithMany(p => p.OrderLines);
+            modelBuilder.Entity<OrderLineEntity>().HasOne(ol => ol.Order).WithMany(o => o.OrderLines);
+
+
         }
         public virtual DbSet<ProductEntity> Products { get; set; }
         public virtual DbSet<CustomerDetailsEntity> CustomerDetails { get; set; }
         public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<OrderEntity> Order { get; set; }
-
-
-        public virtual DbSet<ShoppingCartEntity> ShoppingCartItems { get; set; }
     }
 }

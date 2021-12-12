@@ -9,6 +9,9 @@ namespace HoneyShop.DataAccess.Entities
         public bool OrderCompleted { get; set; }
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public List<Product> ProductList { get; set; }
+        
+        public List<OrderLineEntity> OrderLines { get; set; }
+        public bool IsOrdered { get; set; }
+        
     }
 }

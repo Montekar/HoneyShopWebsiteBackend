@@ -87,13 +87,11 @@ namespace HoneyShopWebsiteBackend
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICustomerDetailsService, CustomerDetailsService>();
             services.AddScoped<IUserService,UserService>();
-            services.AddScoped<IShoppingCartService, ShoppingCartService>();
-            
+
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICustomerDetailsRepository, CustomerDetailsRepository>();
             services.AddScoped<IUserRepository,UserRepository>();
-            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
-            
+
             services.AddScoped<IUserAuthenticator,UserAuthenticator>();
 
             services.AddSingleton<IAuthenticationHelper>(new AuthenticationHelper(secretBytes));
