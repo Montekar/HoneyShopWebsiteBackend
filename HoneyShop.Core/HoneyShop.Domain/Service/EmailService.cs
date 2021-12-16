@@ -2,7 +2,6 @@
 using System.Net;
 using System.Net.Mail;
 using HoneyShop.Core.IServices;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HoneyShop.Domain.Service
 {
