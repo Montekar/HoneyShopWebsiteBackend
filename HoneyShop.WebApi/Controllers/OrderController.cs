@@ -24,7 +24,7 @@ namespace HoneyShopWebsiteBackend.Controllers
         }
         
         [HttpPost]
-        public ActionResult<Order> CreateCustomerDetails(OrderDto orderDto)
+        public ActionResult<Order> CreateOrder(OrderDto orderDto)
         {
             var order = new Order
             {
@@ -33,6 +33,47 @@ namespace HoneyShopWebsiteBackend.Controllers
                 OrderPaid = orderDto.OrderPaid
             };
             return _service.CreateOrder(order);
+        }
+        
+        [HttpPut]
+        public ActionResult<Order> UpdateOrder([FromBody] OrderDto orderDto)
+        {
+            var order = new Order
+            {
+                CustomerId = orderDto.CustomerId,
+                OrderCompleted = orderDto.OrderCompleted,
+                OrderPaid = orderDto.OrderPaid
+            };
+            var updateItem = _service.EditOrder(order);
+            if (updateItem)
+            {
+                return Ok("Order was updated");
+            }
+
+            return BadRequest("Order couldn't be updated");
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Order> DeleteItem(int id)
+        {
+            var deletedItem = _service.DeleteOrder(id);
+            if (deletedItem)
+            {
+                return Ok("Order was deleted");
+            }
+            return BadRequest("Order couldn't be deleted");
+        }
+        
+        [HttpGet("{id}")]
+        public ActionResult<Order> GetItemById(int id)
+        {
+            var order = _service.ReadSingleOrder(id);
+            if (order!= null)
+            {
+                return order;
+            }
+
+            return BadRequest("Item was not found");
         }
 
     }

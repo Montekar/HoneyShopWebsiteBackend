@@ -43,14 +43,9 @@ namespace HoneyShopWebsiteBackend.Controllers
             return _service.GetAllProducts();
         }
 
-        [HttpPut("{id}")]
-        public ActionResult<Product> UpdateProduct(int id,[FromBody] Product product)
+        [HttpPut]
+        public ActionResult<Product> UpdateProduct([FromBody] Product product)
         {
-            if (id < 1 || id != product.Id)
-            {
-                return BadRequest("Parameter Id and product Id must be the same");
-            }
-            
             var updateProduct = _service.UpdateProduct(product);
             if (updateProduct)
             {

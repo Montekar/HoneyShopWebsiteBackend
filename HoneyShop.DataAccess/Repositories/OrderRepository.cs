@@ -8,27 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HoneyShop.DataAccess.Repositories
 {
-    /*public class InClassName
-    {
-        public InClassName(int OrderId)
-        {
-            this.OrderId = OrderId;
-        }
-
-        public int OrderId { get; private set; }
-    }
-
-    public class Order
-    {
-        public Order(InClassName inClassName)
-        {
-            InClassName = inClassName;
-        }
-
-        public InClassName InClassName { get; private set; }
-    }
-    */
-
     public class OrderRepository : IOrderRepository
     {
         private readonly HoneyDbContext _honeyContext;
@@ -57,6 +36,60 @@ namespace HoneyShop.DataAccess.Repositories
                 OrderPaid = orderEntity.OrderPaid,
                 OrderCompleted = orderEntity.OrderCompleted
             };
+        }
+        
+        public Order ReadSingleOrder(int orderId)
+        {
+
+            return _honeyContext.Order
+                .Select(o => new Order()
+                {
+                    Id = o.Id,
+                    CustomerId = o.CustomerId,
+                    OrderCompleted = o.OrderCompleted,
+                    OrderPaid = o.OrderPaid
+                }).FirstOrDefault(i => i.Id == orderId);
+        } 
+
+        public List<Order> ReadAllOrders()
+        {
+            return _honeyContext.Order.Select(oe => new Order()
+            {
+                Id = oe.Id,
+                CustomerId = oe.CustomerId,
+                OrderCompleted = oe.OrderCompleted,
+                OrderPaid = oe.OrderPaid
+            }).ToList();
+
+        }
+
+        public bool DeleteOrder(int OrderId)
+        {
+            var productToRemove = _honeyContext.Order.Where(o => o.Id == OrderId);
+            if (productToRemove != null)
+            {
+                _honeyContext.RemoveRange(productToRemove);
+                _honeyContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public bool EditOrder(Order order)
+        {
+            if (order != null)
+            {
+                var orderEntity = new OrderEntity()
+                {
+                    Id = order.Id,
+                    CustomerId = order.CustomerId,
+                    OrderCompleted = order.OrderCompleted,
+                    OrderPaid = order.OrderPaid
+                };
+                var savedEntity = _honeyContext.Order.Update(orderEntity).Entity;
+                _honeyContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

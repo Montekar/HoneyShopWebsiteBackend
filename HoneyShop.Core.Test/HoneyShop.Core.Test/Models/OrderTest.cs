@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using HoneyShop.Core.Models;
+using HoneyShop.Domain.IRepository;
+using HoneyShop.Domain.Service;
+using Moq;
 using Xunit;
 namespace HoneyShop.Core.Test.Models
 {
     public class OrderTest
     {
-        private Order _order;
+       
+        private readonly Order _order;
         public OrderTest()
         {
             _order = new Order();
@@ -45,7 +50,6 @@ namespace HoneyShop.Core.Test.Models
             
             Assert.True(_order.OrderCompleted);
         }
-
     }
 
 }

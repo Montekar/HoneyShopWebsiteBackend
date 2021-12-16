@@ -19,6 +19,26 @@ namespace HoneyShop.Domain.Service
         {
             return _orderRepository.CreateOrder(order);
         }
+        
+        public Order ReadSingleOrder(int OrderId)
+        {
+            return _orderRepository.ReadSingleOrder(OrderId);
+        }
+
+        public List<Order> ReadAllOrders()
+        {
+            return _orderRepository.ReadAllOrders();
+        }
+
+        public bool DeleteOrder(int OrderId)
+        {
+            return _orderRepository.DeleteOrder(OrderId);
+        }
+
+        public bool EditOrder(Order order)
+        {
+            return _orderRepository.EditOrder(order);
+        }
 
     }
 }
