@@ -99,7 +99,7 @@ namespace HoneyShop.Infrastructure.Test
             Assert.True(actual);
         }
         
-        [Fact]
+        /*[Fact]
         public void UpdateProduct_UpdateProductInDBContext_ReturnProduct()
         {
             _fakeDbContext.Set<ProductEntity>().AddRange(_list);
@@ -123,7 +123,7 @@ namespace HoneyShop.Infrastructure.Test
             
             var actual = _productRepository.UpdateProduct(product);
             Assert.True(actual);
-        }
+        }*/
         
         public class Comparer: IEqualityComparer<Product>
         {

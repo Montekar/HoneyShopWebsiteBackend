@@ -49,7 +49,7 @@ namespace HoneyShop.DataAccess.Repositories
                 Price = product.Price
             };
 
-            if (entity != null)
+            if (product != null)
             {
                 _honeyDbContext.Update(entity);
                 _honeyDbContext.SaveChanges();
