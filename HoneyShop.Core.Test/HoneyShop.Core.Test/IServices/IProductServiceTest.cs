@@ -3,7 +3,6 @@ using HoneyShop.Core.IServices;
 using HoneyShop.Core.Models;
 using Moq;
 using Xunit;
-
 namespace HoneyShop.Core.Test.IServices
 {
     public class IProductServiceTest

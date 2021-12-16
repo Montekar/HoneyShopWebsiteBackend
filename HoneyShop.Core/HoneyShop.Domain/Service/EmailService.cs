@@ -38,16 +38,10 @@ namespace HoneyShop.Domain.Service
                 IsBodyHtml = false
             };
             message.To.Add(toEmail);
-
-            try
-            {
+            
                 client.Send(message);
+                
                 return true;
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
     }
     }

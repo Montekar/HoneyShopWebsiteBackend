@@ -59,12 +59,10 @@ namespace HoneyShop.Core.Test.IServices
             Assert.Equal(expectedList, _service.Object.GetAllCustomerDetails());
         }
         
-/*
         [Fact]
         public void CreateCustomerDetails_ReturnsTrue()
         {
-            var expected = true;
-            var customerDetails = new CustomerDetails()
+            var expected = new CustomerDetails()
             {
                 Id = 1, 
                 FirstName = "Soup",
@@ -77,17 +75,16 @@ namespace HoneyShop.Core.Test.IServices
                 AddressStreet = "ewfwef",
                 AddressNumber = "ewfwef"
             };
-            _service.Setup(ps => ps.CreateCustomerDetails(customerDetails))
+            _service.Setup(ps => ps.CreateCustomerDetails(expected))
                 .Returns(expected);
             
-            Assert.Equal(expected, _service.Object.CreateCustomerDetails(customerDetails));
+            Assert.Equal(expected, _service.Object.CreateCustomerDetails(expected));
         }
 
         [Fact]
         public void UpdateCustomerDetails_ReturnsTrue()
         {
-            var expected = true;
-            var customerDetails = new CustomerDetails()
+            var expected = new CustomerDetails()
             {
                 Id = 1, 
                 FirstName = "Bob",
@@ -100,22 +97,35 @@ namespace HoneyShop.Core.Test.IServices
                 AddressStreet = "Randomgade",
                 AddressNumber = "96 ST TV"
             };
-            _service.Setup(ps => ps.UpdateCustomerDetails(customerDetails))
+            _service.Setup(ps => ps.UpdateCustomerDetails(expected))
                 .Returns(expected);
             
-            Assert.Equal(expected, _service.Object.UpdateCustomerDetails(customerDetails));
+            Assert.Equal(expected, _service.Object.UpdateCustomerDetails(expected));
         }
         
         [Fact]
         public void DeleteCustomerDetails_ReturnsTrue()
+       
         {
-            var expected = true;
-            _service.Setup(ps => ps.DeleteCustomerDetails(1))
+            var expected = new CustomerDetails()
+            {
+                Id = 1, 
+                FirstName = "Bob",
+                LastName = "TheBuilder",
+                PhoneNumber = "12345678",
+                    
+                AddressCountry = "Denmark",
+                AddressCity = "Esbjerg",
+                AddressPostCode = "6500",
+                AddressStreet = "Randomgade",
+                AddressNumber = "96 ST TV"
+            };
+            _service.Setup(ps => ps.DeleteCustomerDetails(expected.Id))
                 .Returns(expected);
             
-            Assert.Equal(expected, _service.Object.DeleteCustomerDetails(1));
+            Assert.Equal(expected, _service.Object.DeleteCustomerDetails(expected.Id));
         }
-        */
+
         [Fact]
         public void GetCustomerDetails_ById()
         {
