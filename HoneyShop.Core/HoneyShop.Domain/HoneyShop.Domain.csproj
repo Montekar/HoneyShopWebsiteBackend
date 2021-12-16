@@ -14,4 +14,10 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.12" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Microsoft.AspNetCore.Mvc.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+        <HintPath>..\..\..\..\.dotnet\shared\Microsoft.AspNetCore.App\5.0.11\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

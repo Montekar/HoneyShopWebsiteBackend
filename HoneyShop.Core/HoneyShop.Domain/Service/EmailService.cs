@@ -2,13 +2,17 @@
 using System.Net;
 using System.Net.Mail;
 using HoneyShop.Core.IServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HoneyShop.Domain.Service
 {
     public class EmailService : IEmailService
     {
-        public bool SendEmail(string receiverEmail, string subject, string body)
+        public bool SendEmail([FromBody]string receiverEmail, string subject, string body)
         {
+            Console.WriteLine(receiverEmail);
+            Console.WriteLine(subject);
+            Console.WriteLine(body);
             var client = new SmtpClient()
             {
                 Host = "smtp.gmail.com",

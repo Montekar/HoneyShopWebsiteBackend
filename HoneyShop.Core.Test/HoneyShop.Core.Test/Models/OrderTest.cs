@@ -11,7 +11,6 @@ namespace HoneyShop.Core.Test.Models
         public OrderTest()
         {
             _order = new Order();
-            _order.ProductList = new List<Product>();
         }
         
         
@@ -37,17 +36,6 @@ namespace HoneyShop.Core.Test.Models
             _order.CustomerId = 1;
             Assert.Equal(expected, _order.CustomerId);
             Assert.True(_order.CustomerId is int);
-        }
-        
-        
-        [Fact]
-        public void OrderClass_HasList_WithProductObject()
-        {    var product1 = new Product() { Id = 1, Name = "Honey", Description = "1kg Dark Honey", Price = 5.00 };
-            
-            _order.ProductList.Add(product1);
-
-            Assert.True(_order.ProductList.Count > 0);
-            Assert.True(_order.ProductList[0].GetType() == typeof(Product));
         }
 
         [Fact]

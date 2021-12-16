@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using HoneyShop.Core.Models;
-
-namespace HoneyShop.DataAccess.Entities
+﻿namespace HoneyShopWebsiteBackend.Dto.UserDto
 {
-    public class OrderEntity
+    public class OrderDto
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }

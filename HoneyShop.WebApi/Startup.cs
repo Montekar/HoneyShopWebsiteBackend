@@ -125,7 +125,8 @@ namespace HoneyShopWebsiteBackend
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IHoneyDbSeeder, HoneyDbSeeder>();
             services.AddScoped<IEmailService, EmailService>();
-
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddScoped<ISecurityService, SecurityService>();
             services.AddScoped<IAuthUserRepository, AuthUserRepository>();
