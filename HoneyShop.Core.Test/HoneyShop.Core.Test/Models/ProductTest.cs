@@ -53,23 +53,5 @@ namespace HoneyShop.Core.Test.Models
             Assert.Equal(expected, _product.Price);
             Assert.True(_product.Price is double);
         }
-
-        [Fact]
-        public void Equals_ProductWithSameProperties_ReturnTrue()
-        {
-            var product1 = new Product() { Id = 1, Name = "Honey", Description = "1kg Dark Honey", Price = 5.00 };
-            var product2 = new Product() { Id = 1, Name = "Honey", Description = "1kg Dark Honey", Price = 5.00 };
-            Assert.True(product1.Equals(product2));
-            Assert.True(product2.Equals(product1));
-        }
-        
-        [Fact]
-        public void NotEquals_ProductWithDifferentProperties_ReturnFalse()
-        {
-            var product1 = new Product() { Id = 1, Name = "Honey", Description = "1kg Dark Honey", Price = 5.00 };
-            var product2 = new Product() { Id = 1, Name = "Honey", Description = "1kg Bright Honey", Price = 5.00 };
-            Assert.False(product1.Equals(product2));
-            Assert.False(product2.Equals(product1));
-        }
     }
 }

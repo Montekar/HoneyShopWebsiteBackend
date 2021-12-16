@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 using HoneyShop.Core.IServices;
@@ -9,9 +10,11 @@ namespace HoneyShop.Domain.Service
     {
         public bool SendEmail(string receiverEmail, string subject, string body)
         {
-            Console.WriteLine(receiverEmail);
-            Console.WriteLine(subject);
-            Console.WriteLine(body);
+            if (receiverEmail == null || subject == null || body == null)
+            {
+                 throw new InvalidDataException("Receiver email, subject, body cannot be null");
+            }
+
             var client = new SmtpClient()
             {
                 Host = "smtp.gmail.com",

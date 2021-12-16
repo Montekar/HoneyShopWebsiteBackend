@@ -39,8 +39,8 @@ namespace HoneyShop.Domain.Test.Service
         {
             var expected = new List<Product>()
             {
-                new Product(){Id = 1, Name = "Bee bread small", Description = "Bee Bread 100g", Price = 4.00},
-                new Product(){Id = 1, Name = "Bee bread large", Description = "Bee Bread 200g", Price = 8.00},
+                new Product() {Id = 1, Name = "Bee bread small", Description = "Bee Bread 100g", Price = 4.00},
+                new Product() {Id = 1, Name = "Bee bread large", Description = "Bee Bread 200g", Price = 8.00},
             };
 
             _mock.Setup(r => r.GetAllProducts())
@@ -50,6 +50,24 @@ namespace HoneyShop.Domain.Test.Service
         }
 
         [Fact]
+        public void GetProductById_Returns_IntValue()
+        {
+            int id = 5;
+            var expected = new Product
+            {
+                Id = id,
+                Description = "Description",
+                Name = "Name",
+                Price = 10.0
+            };
+
+            _mock.Setup(r => r.GetProductById(id))
+                .Returns(expected);
+            var actual = _service.GetProductById(id);
+            Assert.Equal(expected, actual);
+        }
+
+    [Fact]
         public void DeleteProduct_Returns_BooleanValue()
         {
             var expected = true;
@@ -80,6 +98,5 @@ namespace HoneyShop.Domain.Test.Service
             var actual = _service.CreateProduct(product);
             Assert.Equal(expected, actual);
         }
-        
     }
 }

@@ -5,6 +5,6 @@ namespace HoneyShop.Security.IServices
     public interface IAuthUserService
     {
         User GetUser(string email);
-        User RegisterUser(string email, string hashedPasswordFromPlain, string salt);
+        User RegisterUser(string email, string hashedPasswordFromPlain, string salt, bool isAdmin);
     }
 }

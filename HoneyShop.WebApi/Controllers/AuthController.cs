@@ -47,7 +47,7 @@ namespace HoneyShopWebsiteBackend.Controllers
         [HttpPost(nameof(Register))]
         public ActionResult<RegisteredDto> Register([FromBody] RegisterDto dto)
         {
-            var user = _securityService.RegisterUser(dto.Email, dto.Password);
+            var user = _securityService.RegisterUser(dto.Email, dto.Password,dto.IsAdmin);
             if (user == null)
             {
                 return Problem("Could not create user with email: " + dto.Email);;
@@ -56,7 +56,8 @@ namespace HoneyShopWebsiteBackend.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
-                Password = user.HashedPassword
+                Password = user.HashedPassword,
+                Role = user.Role
             };
         }
 
@@ -75,6 +76,7 @@ namespace HoneyShopWebsiteBackend.Controllers
         {
             public string Email { get; set; }
             public string Password { get; set; }
+            public bool IsAdmin { get; set; }
         }
 
         public class RegisteredDto
@@ -82,6 +84,7 @@ namespace HoneyShopWebsiteBackend.Controllers
             public int Id { get; set; }
             public string Email { get; set; }
             public string Password { get; set; }
+            public string Role { get; set; }
         }
     }
 }

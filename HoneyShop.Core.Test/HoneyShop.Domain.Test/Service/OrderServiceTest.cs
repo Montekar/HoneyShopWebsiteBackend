@@ -38,6 +38,16 @@ namespace HoneyShop.Domain.Test.Service
                 () => new OrderService(null));
             Assert.Equal("Product repository can not be null", exception.Message);
         }
+        
+        [Fact]
+        public void CreateOrder_WithTypeOrder_ReturnsOrder()
+        {
+            Order expectedOrder = new Order() { Id = 1,CustomerId = 1,OrderCompleted = false,OrderPaid = false};
+            _mock.Setup(r => r.CreateOrder(expectedOrder))
+                .Returns(expectedOrder);
+            var actual = _service.CreateOrder(expectedOrder);
+            Assert.Equal(expectedOrder, actual);
+        }
 
 
 
