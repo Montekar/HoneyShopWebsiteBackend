@@ -8,7 +8,7 @@ namespace HoneyShop.Domain.Service
 {
     public class EmailService : IEmailService
     {
-        public bool SendEmail([FromBody]string receiverEmail, string subject, string body)
+        public bool SendEmail(string receiverEmail, string subject, string body)
         {
             Console.WriteLine(receiverEmail);
             Console.WriteLine(subject);
