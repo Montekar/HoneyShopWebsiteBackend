@@ -39,7 +39,6 @@ namespace HoneyShopWebsiteBackend.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
                 return StatusCode(500, "Please contact Admin");
             }
         }
