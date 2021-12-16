@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Castle.Core.Internal;
 using HoneyShop.Core.IServices;
+using HoneyShopWebsiteBackend.Dto.UserDto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +24,13 @@ namespace HoneyShopWebsiteBackend.Controllers
         }
         
         [HttpPost]
-        public ActionResult<bool> CreateCustomerDetails(string receiverEmail, string subject, string body)
+        public ActionResult<bool> CreateCustomerDetails(EmailDto emailDto)
         {
-            return _service.SendEmail(receiverEmail, subject, body);
+            if (emailDto.ReceiverEmail.IsNullOrEmpty() || emailDto.Subject.IsNullOrEmpty() || emailDto.Body.IsNullOrEmpty())
+            {
+                return BadRequest("Null or Empty");
+            }
+            return _service.SendEmail(emailDto.ReceiverEmail, emailDto.Subject, emailDto.Body);
         }
     }
 }
