@@ -76,20 +76,19 @@ namespace HoneyShop.DataAccess.Repositories
         }
         public bool EditOrder(Order order)
         {
-            if (order != null)
+            var entity = new OrderEntity()
             {
-                var orderEntity = new OrderEntity()
-                {
-                    Id = order.Id,
-                    CustomerId = order.CustomerId,
-                    OrderCompleted = order.OrderCompleted,
-                    OrderPaid = order.OrderPaid
-                };
-                var savedEntity = _honeyContext.Order.Update(orderEntity).Entity;
-                _honeyContext.SaveChanges();
-                return true;
-            }
-            return false;
+                Id = order.Id,
+                CustomerId = order.CustomerId,
+                OrderCompleted = order.OrderCompleted,
+                OrderPaid = order.OrderPaid
+            };
+
+            if (entity == null) return false;
+            _honeyContext.Update(entity);
+            _honeyContext.SaveChanges();
+            return true;
+
         }
     }
 }

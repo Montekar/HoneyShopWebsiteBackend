@@ -30,6 +30,11 @@ namespace HoneyShop.DataAccess
                 AddressPostCode = "7501"
             });
 
+            _ctx.Order.Add(new OrderEntity() { Id = 1, CustomerId = 1, OrderCompleted = false, OrderPaid = false });
+            _ctx.Order.Add(new OrderEntity() { Id = 2, CustomerId = 1, OrderCompleted = false, OrderPaid = false });
+            _ctx.Order.Add(new OrderEntity() { Id = 3, CustomerId = 1, OrderCompleted = false, OrderPaid = false });
+            _ctx.Order.Add(new OrderEntity() { Id = 4, CustomerId = 1, OrderCompleted = false, OrderPaid = false });
+
             _ctx.Products.Add(new ProductEntity() {Id = 1, Name = "Honey", Description = "Bright fresh", Price = 5});
             _ctx.Products.Add(new ProductEntity() {Id = 2, Name = "Honey", Description = "Bright solid", Price = 5});
             _ctx.Products.Add(new ProductEntity() {Id = 3, Name = "Honey", Description = "Dark fresh", Price = 5});

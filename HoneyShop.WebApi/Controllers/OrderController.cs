@@ -35,6 +35,12 @@ namespace HoneyShopWebsiteBackend.Controllers
             return _service.CreateOrder(order);
         }
         
+        [HttpGet]
+        public ActionResult<List<Order>> GetAll()
+        {
+            return _service.ReadAllOrders();
+        }
+        
         [HttpPut]
         public ActionResult<Order> UpdateOrder([FromBody] OrderDto orderDto)
         {
@@ -54,7 +60,7 @@ namespace HoneyShopWebsiteBackend.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Order> DeleteItem(int id)
+        public ActionResult<Order> DeleteOrder(int id)
         {
             var deletedItem = _service.DeleteOrder(id);
             if (deletedItem)
