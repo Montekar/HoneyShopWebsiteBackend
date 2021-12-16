@@ -48,10 +48,48 @@ namespace HoneyShop.Domain.Test.Service
             var actual = _service.CreateOrder(expectedOrder);
             Assert.Equal(expectedOrder, actual);
         }
-
-
-
-
-
+        [Fact]
+        public void ReadAllOrders_WithNoParam_ReturnsListOrder()
+        {
+            List<Order> expectedOrders = new List<Order>
+            {
+                new Order() { Id = 1,CustomerId = 1,OrderCompleted = false,OrderPaid = false},
+                new Order() { Id = 1,CustomerId = 1,OrderCompleted = true,OrderPaid = true}
+            };
+            _mock.Setup(r => r.ReadAllOrders())
+                .Returns(expectedOrders);
+            var actual = _service.ReadAllOrders();
+            Assert.Equal(expectedOrders, actual);
+        }
+        
+        [Fact]
+        public void DeleteOrder_WithIdParam_ReturnsBoolean()
+        {
+            int id = 2;
+            var expected = true;
+            _mock.Setup(r => r.DeleteOrder(id))
+                .Returns(true);
+            var actual = _service.DeleteOrder(id);
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void EditOrder_WithOrderParam_ReturnsOrder()
+        {
+            var order = new Order() {Id = 1, CustomerId = 1, OrderCompleted = true, OrderPaid = true};
+            var expected = true;
+            _mock.Setup(r => r.EditOrder(order))
+                .Returns(true);
+            var actual = _service.EditOrder(order);
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void GetOrderById_WithIdParam_ReturnsOrder()
+        {
+            var expected = new Order() {Id = 1, CustomerId = 1, OrderCompleted = true, OrderPaid = true};
+            _mock.Setup(r => r.ReadSingleOrder(expected.Id))
+                .Returns(expected);
+            var actual = _service.ReadSingleOrder(expected.Id);
+            Assert.Equal(expected, actual);
+        }
     }
 }

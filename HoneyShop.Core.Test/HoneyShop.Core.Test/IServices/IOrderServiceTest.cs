@@ -8,12 +8,12 @@ using Xunit;
 
 namespace HoneyShop.Core.Test.IServices
 {
-    public class InterfaceOrderServiceTest
+    public class IOrderServiceTest
     {
         private readonly Mock<IOrderRepository> _mock;
         private readonly OrderService _service;
         private readonly Order _order;
-        public InterfaceOrderServiceTest()
+        public IOrderServiceTest()
         {
             _mock = new Mock<IOrderRepository>();
             _service = new OrderService(_mock.Object);
