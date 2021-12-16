@@ -45,6 +45,14 @@ namespace HoneyShop.Core.Test.Models
             
             Assert.True(_order.OrderCompleted);
         }
+        
+        [Fact]
+        public void OrderClass_HasBool_OrderPaid()
+        {
+            _order.OrderPaid = true;
+            
+            Assert.True(_order.OrderPaid);
+        }
 
     }
 

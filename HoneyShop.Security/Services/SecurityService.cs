@@ -39,7 +39,8 @@ namespace HoneyShop.Security.Services
             var claims = new List<Claim>
             {
                 new Claim("UserEmail", user.Email),
-                new Claim("UserId", user.Id.ToString())
+                new Claim("UserId", user.Id.ToString()),
+                new Claim("Role",user.Role)
             };
             
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Secret"]));
@@ -80,12 +81,12 @@ namespace HoneyShop.Security.Services
                 numBytesRequested: 256 / 8));
         }
 
-         public User RegisterUser(string email, string password)
+         public User RegisterUser(string email, string password, bool isAdmin)
          {
              var salt = "123#$%^";
              var hashedPasswordFromPlain = HashedPassword(password,Encoding.ASCII.GetBytes(salt));
 
-             return _authUserService.RegisterUser(email,hashedPasswordFromPlain,salt);
+             return _authUserService.RegisterUser(email,hashedPasswordFromPlain,salt,isAdmin);
          }
     }
 }

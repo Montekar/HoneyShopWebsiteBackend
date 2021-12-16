@@ -72,7 +72,7 @@ namespace HoneyShop.Domain.Test.Service
             var actual = _service.GetAllCustomerDetails();
             Assert.Equal(expected, actual);
         }
-/*
+
         [Fact]
         public void CreateCustomerDetails_Returns_BooleanValue()
         {
@@ -91,13 +91,13 @@ namespace HoneyShop.Domain.Test.Service
             };
             var expected = true;
             _mock.Setup(r => r.CreateCustomerDetails(customerDetails))
-                .Returns(expected);
+                .Returns(customerDetails);
             var actual = _service.CreateCustomerDetails(customerDetails);
-            Assert.Equal(expected, actual);
+            Assert.Equal(customerDetails, actual);
         }
         
         [Fact]
-        public void UpdateCustomerDetails_Returns_BooleanValue()
+        public void UpdateCustomerDetails_Returns_CustomerDetails()
         {
             CustomerDetails customerDetails = new CustomerDetails()
             {
@@ -112,22 +112,96 @@ namespace HoneyShop.Domain.Test.Service
                 AddressStreet = "Randomgade",
                 AddressNumber = "96 ST TV"
             };
-            var expected = true;
             _mock.Setup(r => r.UpdateCustomerDetails(customerDetails))
-                .Returns(expected);
+                .Returns(customerDetails);
             var actual = _service.UpdateCustomerDetails(customerDetails);
-            Assert.Equal(expected, actual);
+            Assert.Equal(customerDetails, actual);
         }
-        
         [Fact]
-        public void DeleteCustomerDetails_Returns_BooleanValue()
+        public void DeleteCustomerDetails_Returns_CustomerDetails()
         {
-            var expected = true;
+            CustomerDetails expected = new CustomerDetails()
+            {
+                Id = 1, 
+                FirstName = "Bob",
+                LastName = "TheBuilder",
+                PhoneNumber = "12345678",
+                    
+                AddressCountry = "Denmark",
+                AddressCity = "Esbjerg",
+                AddressPostCode = "6500",
+                AddressStreet = "Randomgade",
+                AddressNumber = "96 ST TV"
+            };
             _mock.Setup(r => r.DeleteCustomerDetails(1))
                 .Returns(expected);
             var actual = _service.DeleteCustomerDetails(1);
             Assert.Equal(expected, actual);
         }
-        */
+        [Fact]
+        public void GetCustomerDetailsById_Returns_CustomerDetails()
+        {
+            int id = 1;
+            CustomerDetails expected = new CustomerDetails()
+            {
+                Id = id, 
+                FirstName = "Bob",
+                LastName = "TheBuilder",
+                PhoneNumber = "12345678",
+                    
+                AddressCountry = "Denmark",
+                AddressCity = "Esbjerg",
+                AddressPostCode = "6500",
+                AddressStreet = "Randomgade",
+                AddressNumber = "96 ST TV"
+            };
+            _mock.Setup(r => r.GetCustomerDetailsById(id))
+                .Returns(expected);
+            var actual = _service.GetCustomerDetailsById(id);
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void GetCustomerDetailsByUserId_Returns_CustomerDetailsList()
+        {
+            int firstId = 1;
+            int secondId = 2;
+            int userId = 1;
+            List<CustomerDetails> expected = new List<CustomerDetails>
+            {
+                new CustomerDetails()
+                {
+                    Id = firstId,
+                    UserId = userId,
+                    FirstName = "Bob",
+                    LastName = "TheBuilder",
+                    PhoneNumber = "12345678",
+
+                    AddressCountry = "Denmark",
+                    AddressCity = "Esbjerg",
+                    AddressPostCode = "6500",
+                    AddressStreet = "Randomgade",
+                    AddressNumber = "96 ST TV"
+                },
+                new CustomerDetails()
+                {
+                    Id = secondId,
+                    UserId = userId,
+                    FirstName = "kek",
+                    LastName = "TheBuilder",
+                    PhoneNumber = "12345678",
+
+                    AddressCountry = "Denmark",
+                    AddressCity = "Esbjerg",
+                    AddressPostCode = "6500",
+                    AddressStreet = "Randomgade",
+                    AddressNumber = "96 ST TV"
+                },
+                
+            };
+            _mock.Setup(r => r.GetCustomerDetailsByUserId(userId))
+                .Returns(expected);
+            var actual = _service.GetCustomerDetailsByUserId(userId);
+            Assert.Equal(expected, actual);
+        }
     }
 }

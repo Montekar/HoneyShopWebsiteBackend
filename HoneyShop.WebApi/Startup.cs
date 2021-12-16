@@ -119,10 +119,8 @@ namespace HoneyShopWebsiteBackend
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICustomerDetailsService, CustomerDetailsService>();
-            services.AddScoped<IShoppingCartService, ShoppingCartService>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICustomerDetailsRepository, CustomerDetailsRepository>();
-            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IHoneyDbSeeder, HoneyDbSeeder>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IOrderService, OrderService>();

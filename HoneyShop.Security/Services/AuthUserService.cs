@@ -17,9 +17,9 @@ namespace HoneyShop.Security.Services
             return _authUserRepository.FindUser(email);
         }
 
-        public User RegisterUser(string email, string hashedPassword, string salt)
+        public User RegisterUser(string email, string hashedPassword, string salt, bool isAdmin)
         {
-            return _authUserRepository.RegisterUser(email, hashedPassword, salt);
+            return _authUserRepository.RegisterUser(email, hashedPassword, salt,isAdmin);
         }
     }
 }

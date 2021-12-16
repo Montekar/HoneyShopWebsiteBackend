@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text;
 using HoneyShop.Security.Entities;
 using HoneyShop.Security.IRepositories;
@@ -32,22 +33,25 @@ namespace HoneyShop.Security.Repositories
                 Id = entity.Id,
                 Email = entity.Email,
                 HashedPassword = entity.HashedPassword,
-                Salt = Encoding.ASCII.GetBytes(entity.Salt)
+                Salt = Encoding.ASCII.GetBytes(entity.Salt),
+                Role = entity.Role
             };
         }
 
-        public User RegisterUser(string email, string hashedPassword, string salt)
+        public User RegisterUser(string email, string hashedPassword, string salt, bool isAdmin)
         {
             if (FindUser(email) != null)
             {
                 return null;
             }
-            
+
+            Console.WriteLine(isAdmin);
             var entity = _ctx.AuthUsers.Add(new AuthUserEntity
             {
                 Email = email,
                 Salt = salt,
-                HashedPassword = hashedPassword
+                HashedPassword = hashedPassword,
+                Role = isAdmin? "Admin" : "User"
             }).Entity;
             _ctx.SaveChanges();
             return new User
@@ -55,7 +59,8 @@ namespace HoneyShop.Security.Repositories
                 Id = entity.Id,
                 Email = entity.Email,
                 HashedPassword = entity.HashedPassword,
-                Salt = Encoding.ASCII.GetBytes(entity.Salt)
+                Salt = Encoding.ASCII.GetBytes(entity.Salt),
+                Role = entity.Role
             };
         }
     }

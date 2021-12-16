@@ -6,6 +6,6 @@ namespace HoneyShop.Security.IServices
     {
         JwtToken GenerateJwtToken(string email, string password);
         string HashedPassword(string plainTextPassword, byte[] userSalt);
-        User RegisterUser(string email, string password);
+        User RegisterUser(string email, string password,bool isAdmin);
     }
 }
