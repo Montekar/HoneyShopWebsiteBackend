@@ -22,11 +22,20 @@ namespace HoneyShop.Security
             _ctx.Database.EnsureCreated();
 
             var salt = "123#!";
+            
             _ctx.AuthUsers.Add(new AuthUserEntity
             {
                 Salt = salt,
-                HashedPassword = _securityService.HashedPassword("123",Encoding.ASCII.GetBytes(salt)),
-                Email = "faust@gmail.com"
+                HashedPassword = _securityService.HashedPassword("user123",Encoding.ASCII.GetBytes(salt)),
+                Email = "ouruser@gmail.com",
+                Role="User"
+            });
+            _ctx.AuthUsers.Add(new AuthUserEntity
+            {
+                Salt = salt,
+                HashedPassword = _securityService.HashedPassword("admin123",Encoding.ASCII.GetBytes(salt)),
+                Email = "ouradmin@gmail.com",
+                Role = "Admin"
             });
             
             
