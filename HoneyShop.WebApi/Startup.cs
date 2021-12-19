@@ -141,6 +141,13 @@ namespace HoneyShopWebsiteBackend
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
+                options.AddPolicy("Prod-cors", policy =>
+                {
+                    policy
+                        .WithOrigins("https://pasbites-570e7.web.app")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
             });
         }
 
@@ -160,6 +167,7 @@ namespace HoneyShopWebsiteBackend
             {
                 honeyDbSeeder.SeedProduction();
                 authDbSeeder.SeedProduction();
+                app.UseCors("Prod-cors");
             }
 
             app.UseHttpsRedirection();
