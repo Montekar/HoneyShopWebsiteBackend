@@ -144,7 +144,7 @@ namespace HoneyShopWebsiteBackend
                 options.AddPolicy("Prod-cors", policy =>
                 {
                     policy
-                        .AllowAnyMethod()
+                        .AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
