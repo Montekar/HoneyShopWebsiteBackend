@@ -55,7 +55,6 @@ namespace HoneyShop.DataAccess
 
         public void SeedProduction()
         {
-            _ctx.Database.EnsureDeleted();
             _ctx.Database.EnsureCreated();
 
             _ctx.Products.Add(new ProductEntity() {Id = 1, Name = "Honey", Description = "Bright fresh", Price = 5});
