@@ -134,17 +134,10 @@ namespace HoneyShopWebsiteBackend
             // services.AddSingleton<IAuthenticationHelper>(new AuthenticationHelper(secretBytes));
             services.AddCors(options =>
             {
-                options.AddPolicy("Dev-cors", policy =>
-                {
-                    policy
-                        .WithOrigins("http://localhost:4200")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
                 options.AddPolicy("Prod-cors", policy =>
                 {
                     policy
-                        .WithOrigins("https://pasbites-570e7.web.app")
+                        .WithOrigins("https://pasbites-570e7.web.app/")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
