@@ -144,7 +144,7 @@ namespace HoneyShopWebsiteBackend
                 options.AddPolicy("Prod-cors", policy =>
                 {
                     policy
-                        .AllowAnyOrigin()
+                        .WithOrigins("https://pasbites-570e7.web.app")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
