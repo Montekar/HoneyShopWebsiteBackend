@@ -28,8 +28,4 @@
       <ProjectReference Include="..\..\HoneyShop.Core\HoneyShop.Domain\HoneyShop.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="IRepositories" />
-    </ItemGroup>
-
 </Project>
